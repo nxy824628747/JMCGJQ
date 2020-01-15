@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.numberone.system.mapper.SysdyzegMarkSelfMapper">
+
+    <resultMap type="com.numberone.system.domain.SysDyzegMark" id="SysDyzegMarkResult">
+        <id property="markId" column="mark_id"/>
+        <result property="markMark" column="mark_mark"/>
+        <result property="markMonth" column="mark_month"/>
+        <result property="markJiDu" column="mark_JiDu"/>
+        <result property="uid" column="uid"/>
+        <result property="markTime" column="mark_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="markYear" column="mark_year"/>
+        <result property="fj1ReasonSelf" column="fj1ReasonSelf"/>
+        <result property="fj1MarkSelf" column="fj1MarkSelf"/>
+        <result property="fj2ReasonSelf" column="fj2ReasonSelf"/>
+        <result property="fj2MarkSelf" column="fj2MarkSelf"/>
+        <result property="fj3ReasonSelf" column="fj3ReasonSelf"/>
+        <result property="fj3MarkSelf" column="fj3MarkSelf"/>
+        <result property="fj4ReasonSelf" column="fj4ReasonSelf"/>
+        <result property="fj4MarkSelf" column="fj4MarkSelf"/>
+        <result property="fj5ReasonSelf" column="fj5ReasonSelf"/>
+        <result property="fj5MarkSelf" column="fj5MarkSelf"/>
+        <result property="fj6ReasonSelf" column="fj6ReasonSelf"/>
+        <result property="fj6MarkSelf" column="fj6MarkSelf"/>
+        <result property="fj7ReasonSelf" column="fj7ReasonSelf"/>
+        <result property="fj7MarkSelf" column="fj7MarkSelf"/>
+        <result property="jf1ReasonSelf" column="jf1ReasonSelf"/>
+        <result property="jf1MarkSelf" column="jf1MarkSelf"/>
+        <result property="jf2ReasonSelf" column="jf2ReasonSelf"/>
+        <result property="jf2MarkSelf" column="jf2MarkSelf"/>
+        <result property="jf3ReasonSelf" column="jf3ReasonSelf"/>
+        <result property="jf3MarkSelf" column="jf3MarkSelf"/>
+        <result property="jf4ReasonSelf" column="jf4ReasonSelf"/>
+        <result property="jf4MarkSelf" column="jf4MarkSelf"/>
+        <result property="jf5ReasonSelf" column="jf5ReasonSelf"/>
+        <result property="jf5MarkSelf" column="jf5MarkSelf"/>
+        <result property="jf6ReasonSelf" column="jf6ReasonSelf"/>
+        <result property="jf6MarkSelf" column="jf6MarkSelf"/>
+        <result property="zzsz1ReasonSelf" column="zzsz1ReasonSelf"/>
+        <result property="zzsz1MarkSelf" column="zzsz1MarkSelf"/>
+        <result property="zzsz2ReasonSelf" column="zzsz2ReasonSelf"/>
+        <result property="zzsz2MarkSelf" column="zzsz2MarkSelf"/>
+        <result property="zzsz3ReasonSelf" column="zzsz3ReasonSelf"/>
+        <result property="zzsz3MarkSelf" column="zzsz3MarkSelf"/>
+        <result property="zzsz4ReasonSelf" column="zzsz4ReasonSelf"/>
+        <result property="zzsz4MarkSelf" column="zzsz4MarkSelf"/>
+        <result property="zzsz5ReasonSelf" column="zzsz5ReasonSelf"/>
+        <result property="zzsz5MarkSelf" column="zzsz5MarkSelf"/>
+        <result property="zzsz6ReasonSelf" column="zzsz6ReasonSelf"/>
+        <result property="zzsz6MarkSelf" column="zzsz6MarkSelf"/>
+        <result property="zzsz7ReasonSelf" column="zzsz7ReasonSelf"/>
+        <result property="zzsz47ArkSelf" column="zzsz47arkSelf"/>
+        <result property="gwjn1ReasonSelf" column="gwjn1ReasonSelf"/>
+        <result property="gwjn1MarkSelf" column="gwjn1MarkSelf"/>
+        <result property="gwjn2ReasonSelf" column="gwjn2ReasonSelf"/>
+        <result property="gwjn2MarkSelf" column="gwjn2MarkSelf"/>
+        <result property="gwjn3ReasonSelf" column="gwjn3ReasonSelf"/>
+        <result property="gwjn3MarkSelf" column="gwjn3MarkSelf"/>
+        <result property="gwjn4ReasonSelf" column="gwjn4ReasonSelf"/>
+        <result property="gwjn4MarkSelf" column="gwjn4MarkSelf"/>
+        <result property="gzyj1ReasonSelf" column="gzyj1ReasonSelf"/>
+        <result property="gzyj1MarkSelf" column="gzyj1MarkSelf"/>
+        <result property="gzyj2ReasonSelf" column="gzyj2ReasonSelf"/>
+        <result property="gzyj2MarkSelf" column="gzyj2MarkSelf"/>
+        <result property="gzyj3ReasonSelf" column="gzyj3ReasonSelf"/>
+        <result property="gzyj3MarkSelf" column="gzyj3MarkSelf"/>
+        <result property="gzyj4ReasonSelf" column="gzyj4ReasonSelf"/>
+        <result property="gzyj4MarkSelf" column="gzyj4MarkSelf"/>
+        <result property="gzyj5ReasonSelf" column="gzyj5ReasonSelf"/>
+        <result property="gzyj5MarkSelf" column="gzyj5MarkSelf"/>
+        <result property="gzyj6ReasonSelf" column="gzyj6ReasonSelf"/>
+        <result property="gzyj6MarkSelf" column="gzyj6MarkSelf"/>
+        <result property="qzpj1ReasonSelf" column="qzpj1ReasonSelf"/>
+        <result property="qzpj1MarkSelf" column="qzpj1MarkSelf"/>
+        <result property="qzpj2ReasonSelf" column="qzpj2ReasonSelf"/>
+        <result property="qzpj2MarkSelf" column="qzpj2MarkSelf"/>
+        <result property="qzpj3ReasonSelf" column="qzpj3ReasonSelf"/>
+        <result property="qzpj3MarkSelf" column="qzpj3MarkSelf"/>
+        <result property="qzpj4ReasonSelf" column="qzpj4ReasonSelf"/>
+        <result property="qzpj4MarkSelf" column="qzpj4MarkSelf"/>
+        <result property="qzpj5ReasonSelf" column="qzpj5ReasonSelf"/>
+        <result property="qzpj5MarkSelf" column="qzpj5MarkSelf"/>
+        <result property="qzpj6ReasonSelf" column="qzpj6ReasonSelf"/>
+        <result property="qzpj6MarkSelf" column="qzpj6MarkSelf"/>
+        <result property="qzpj7ReasonSelf" column="qzpj7ReasonSelf"/>
+        <result property="qzpj7MarkSelf" column="qzpj7MarkSelf"/>
+    </resultMap>
+
+
+    <select id="selectObject" parameterType="SysDyzegMark" resultMap="SysDyzegMarkResult">
+        select fj1ReasonSelf,fj1MarkSelf,fj2ReasonSelf,fj2MarkSelf,fj3ReasonSelf,fj3MarkSelf,
+        fj4ReasonSelf,fj4MarkSelf,fj5ReasonSelf,fj5MarkSelf,fj6ReasonSelf,fj6MarkSelf,fj7ReasonSelf,
+        fj7MarkSelf,jf1ReasonSelf,jf1MarkSelf,jf2ReasonSelf,jf2MarkSelf,jf3ReasonSelf,jf3MarkSelf,
+        jf4ReasonSelf,jf4MarkSelf,jf5ReasonSelf,jf5MarkSelf,jf6ReasonSelf,jf6MarkSelf,zzsz1ReasonSelf,
+        zzsz1MarkSelf,zzsz2ReasonSelf,zzsz2MarkSelf,zzsz3ReasonSelf,zzsz3MarkSelf,zzsz4ReasonSelf,
+        zzsz4MarkSelf,zzsz5ReasonSelf,zzsz5MarkSelf,zzsz6ReasonSelf,zzsz6MarkSelf,zzsz7ReasonSelf,
+        zzsz47arkSelf,gwjn1ReasonSelf,gwjn1MarkSelf,gwjn2ReasonSelf,gwjn2MarkSelf,gwjn3ReasonSelf,
+        gwjn3MarkSelf,gwjn4ReasonSelf,gwjn4MarkSelf,gzyj1ReasonSelf,gzyj1MarkSelf,gzyj2ReasonSelf,
+        gzyj2MarkSelf,gzyj3ReasonSelf,gzyj3MarkSelf,gzyj4ReasonSelf,gzyj4MarkSelf,gzyj5ReasonSelf,
+        gzyj5MarkSelf,gzyj6ReasonSelf,gzyj6MarkSelf,qzpj1ReasonSelf,qzpj1MarkSelf,qzpj2ReasonSelf,
+        qzpj2MarkSelf,qzpj3ReasonSelf,qzpj3MarkSelf,qzpj4ReasonSelf,qzpj4MarkSelf,qzpj5ReasonSelf,
+        qzpj5MarkSelf,qzpj6ReasonSelf,qzpj6MarkSelf,qzpj7ReasonSelf,qzpj7MarkSelf,mark_id,mark_mark,
+        mark_month,mark_JiDu,uid,mark_year,mark_time
+        from sys_dyzegmark_self where mark_id=#{markId}
+    </select>
+    <select id="selectList" parameterType="SysDyzegMark" resultMap="SysDyzegMarkResult">
+        select mark_id,mark_mark,mark_month,mark_JiDu,uid,update_time,mark_time,mark_year
+        from sys_dyzegmark_self where 1=1
+        <if test="uid != null and uid != ''">
+            and uid=#{uid}
+        </if>
+        <if test="markMonth != null and markMonth != ''">
+            and mark_month=#{markMonth}
+        </if>
+        <if test="markYear != null and markYear != ''">
+            and mark_year=#{markYear}
+        </if>
+        <if test="startTime != null and startTime != ''">
+            and mark_time &gt;= #{startTime}
+        </if>
+        <if test="endTime != null and endTime != ''">
+            and mark_time &lt;= #{endTime}
+        </if>
+        <if test="markJiDu != null and markJiDu != ''">
+            and mark_JiDu=#{markJiDu}
+        </if>
+        order by mark_year,mark_month desc
+    </select>
+
+    <delete id="delete" parameterType="String">
+ 		delete from sys_dyzegmark_self where mark_id = #{markId}
+ 	</delete>
+
+    <select id="selectAllList" parameterType="Map" resultType="java.util.HashMap">
+        select s.mark_id as smark_id,s.mark_month as smark_month,
+        s.mark_jiDu as smark_jiDu,s.mark_year as smark_year,
+        s.mark_time as smark_time,s.mark_mark as smark_mark,
+        l.mark_id as lmark_id,l.mark_month as lmark_month,
+        l.mark_jiDu as lmark_jiDu,l.mark_year as lmark_year,
+        l.mark_time as lmark_time,l.mark_mark as lmark_mark,
+        d.mark_id as dmark_id,d.mark_month as dmark_month,
+        d.mark_jiDu as dmark_jiDu,d.mark_year as dmark_year,
+        d.mark_time as dmark_time,d.mark_mark as dmark_mark
+        from sys_dyzegmark_self s
+        left join sys_dyzegmark_leader l on s.mark_id=l.mark_id
+        left join sys_dyzegmark_DZB d on s.mark_id=d.mark_id
+        where 1=1
+        <if test="uid != null and uid != ''">
+            and s.uid=#{uid}
+        </if>
+        <if test="markMonth != null and markMonth != ''">
+            and s.mark_month=#{markMonth}
+        </if>
+        <if test="markYear != null and markYear != ''">
+            and s.mark_year=#{markYear}
+        </if>
+        <if test="startTime != null and startTime != ''">
+            and s.mark_time &gt;= #{startTime}
+        </if>
+        <if test="endTime != null and endTime != ''">
+            and s.mark_time &lt;= #{endTime}
+        </if>
+        <if test="markJiDu != null and markJiDu != ''">
+            and s.mark_JiDu=#{markJiDu}
+        </if>
+        order by smark_year,smark_month desc
+    </select>
+    <insert id="insert" parameterType="SysDyzegMark">
+        insert into sys_dyzegmark_self(
+        <if test="fj1ReasonSelf!=null and fj1ReasonSelf!=''">fj1ReasonSelf,</if>
+        <if test="fj1MarkSelf!=null and fj1MarkSelf!=''">fj1MarkSelf,</if>
+        <if test="fj2ReasonSelf!=null and fj2ReasonSelf!=''">fj2ReasonSelf,</if>
+        <if test="fj2MarkSelf!=null and fj2MarkSelf!=''">fj2MarkSelf,</if>
+        <if test="fj3ReasonSelf!=null and fj3ReasonSelf!=''">fj3ReasonSelf,</if>
+        <if test="fj3MarkSelf!=null and fj3MarkSelf!=''">fj3MarkSelf,</if>
+        <if test="fj4ReasonSelf!=null and fj4ReasonSelf!=''">fj4ReasonSelf,</if>
+        <if test="fj4MarkSelf!=null and fj4MarkSelf!=''">fj4MarkSelf,</if>
+        <if test="fj5ReasonSelf!=null and fj5ReasonSelf!=''">fj5ReasonSelf,</if>
+        <if test="fj5MarkSelf!=null and fj5MarkSelf!=''">fj5MarkSelf,</if>
+        <if test="fj6ReasonSelf!=null and fj6ReasonSelf!=''">fj6ReasonSelf,</if>
+        <if test="fj6MarkSelf!=null and fj6MarkSelf!=''">fj6MarkSelf,</if>
+        <if test="fj7ReasonSelf!=null and fj7ReasonSelf!=''">fj7ReasonSelf,</if>
+        <if test="fj7MarkSelf!=null and fj7MarkSelf!=''">fj7MarkSelf,</if>
+        <if test="jf1ReasonSelf!=null and jf1ReasonSelf!=''">jf1ReasonSelf,</if>
+        <if test="jf1MarkSelf!=null and jf1MarkSelf!=''">jf1MarkSelf,</if>
+        <if test="jf2ReasonSelf!=null and jf2ReasonSelf!=''">jf2ReasonSelf,</if>
+        <if test="jf2MarkSelf!=null and jf2MarkSelf!=''">jf2MarkSelf,</if>
+        <if test="jf3ReasonSelf!=null and jf3ReasonSelf!=''">jf3ReasonSelf,</if>
+        <if test="jf3MarkSelf!=null and jf3MarkSelf!=''">jf3MarkSelf,</if>
+        <if test="jf4ReasonSelf!=null and jf4ReasonSelf!=''">jf4ReasonSelf,</if>
+        <if test="jf4MarkSelf!=null and jf4MarkSelf!=''">jf4MarkSelf,</if>
+        <if test="jf5ReasonSelf!=null and jf5ReasonSelf!=''">jf5ReasonSelf,</if>
+        <if test="jf5MarkSelf!=null and jf5MarkSelf!=''">jf5MarkSelf,</if>
+        <if test="jf6ReasonSelf!=null and jf6ReasonSelf!=''">jf6ReasonSelf,</if>
+        <if test="jf6MarkSelf!=null and jf6MarkSelf!=''">jf6MarkSelf,</if>
+        <if test="zzsz1ReasonSelf!=null and zzsz1ReasonSelf!=''">zzsz1ReasonSelf,</if>
+        <if test="zzsz1MarkSelf!=null and zzsz1MarkSelf!=''">zzsz1MarkSelf,</if>
+        <if test="zzsz2ReasonSelf!=null and zzsz2ReasonSelf!=''">zzsz2ReasonSelf,</if>
+        <if test="zzsz2MarkSelf!=null and zzsz2MarkSelf!=''">zzsz2MarkSelf,</if>
+        <if test="zzsz3ReasonSelf!=null and zzsz3ReasonSelf!=''">zzsz3ReasonSelf,</if>
+        <if test="zzsz3MarkSelf!=null and zzsz3MarkSelf!=''">zzsz3MarkSelf,</if>
+        <if test="zzsz4ReasonSelf!=null and zzsz4ReasonSelf!=''">zzsz4ReasonSelf,</if>
+
+        <if test="zzsz4MarkSelf!=null and zzsz4MarkSelf!=''">zzsz4MarkSelf,</if>
+
+        <if test="zzsz5ReasonSelf!=null and zzsz5ReasonSelf!=''">zzsz5ReasonSelf,</if>
+        <if test="zzsz5MarkSelf!=null and zzsz5MarkSelf!=''">zzsz5MarkSelf,</if>
+        <if test="zzsz6ReasonSelf!=null and zzsz6ReasonSelf!=''">zzsz6ReasonSelf,</if>
+        <if test="zzsz6MarkSelf!=null and zzsz6MarkSelf!=''">zzsz6MarkSelf,</if>
+        <if test="zzsz7ReasonSelf!=null and zzsz7ReasonSelf!=''">zzsz7ReasonSelf,</if>
+
+        <if test="zzsz47ArkSelf!=null and zzsz47ArkSelf!=''">zzsz47arkSelf,</if>
+
+        <if test="gwjn1ReasonSelf!=null and gwjn1ReasonSelf!=''">gwjn1ReasonSelf,</if>
+        <if test="gwjn1MarkSelf!=null and gwjn1MarkSelf!=''">gwjn1MarkSelf,</if>
+        <if test="gwjn2ReasonSelf!=null and gwjn2ReasonSelf!=''">gwjn2ReasonSelf,</if>
+        <if test="gwjn2MarkSelf!=null and gwjn2MarkSelf!=''">gwjn2MarkSelf,</if>
+        <if test="gwjn3ReasonSelf!=null and gwjn3ReasonSelf!=''">gwjn3ReasonSelf,</if>
+        <if test="gwjn3MarkSelf!=null and gwjn3MarkSelf!=''">gwjn3MarkSelf,</if>
+        <if test="gwjn4ReasonSelf!=null and gwjn4ReasonSelf!=''">gwjn4ReasonSelf,</if>
+        <if test="gwjn4MarkSelf!=null and gwjn4MarkSelf!=''">gwjn4MarkSelf,</if>
+        <if test="gzyj1ReasonSelf!=null and gzyj1ReasonSelf!=''">gzyj1ReasonSelf,</if>
+        <if test="gzyj1MarkSelf!=null and gzyj1MarkSelf!=''">gzyj1MarkSelf,</if>
+        <if test="gzyj2ReasonSelf!=null and gzyj2ReasonSelf!=''">gzyj2ReasonSelf,</if>
+        <if test="gzyj2MarkSelf!=null and gzyj2MarkSelf!=''">gzyj2MarkSelf,</if>
+        <if test="gzyj3ReasonSelf!=null and gzyj3ReasonSelf!=''">gzyj3ReasonSelf,</if>
+        <if test="gzyj3MarkSelf!=null and gzyj3MarkSelf!=''">gzyj3MarkSelf,</if>
+        <if test="gzyj4ReasonSelf!=null and gzyj4ReasonSelf!=''">gzyj4ReasonSelf,</if>
+        <if test="gzyj4MarkSelf!=null and gzyj4MarkSelf!=''">gzyj4MarkSelf,</if>
+        <if test="gzyj5ReasonSelf!=null and gzyj5ReasonSelf!=''">gzyj5ReasonSelf,</if>
+        <if test="gzyj5MarkSelf!=null and gzyj5MarkSelf!=''">gzyj5MarkSelf,</if>
+        <if test="gzyj6ReasonSelf!=null and gzyj6ReasonSelf!=''">gzyj6ReasonSelf,</if>
+        <if test="gzyj6MarkSelf!=null and gzyj6MarkSelf!=''">gzyj6MarkSelf,</if>
+        <if test="qzpj1ReasonSelf!=null and qzpj1ReasonSelf!=''">qzpj1ReasonSelf,</if>
+        <if test="qzpj1MarkSelf!=null and qzpj1MarkSelf!=''">qzpj1MarkSelf,</if>
+        <if test="qzpj2ReasonSelf!=null and qzpj2ReasonSelf!=''">qzpj2ReasonSelf,</if>
+        <if test="qzpj2MarkSelf!=null and qzpj2MarkSelf!=''">qzpj2MarkSelf,</if>
+        <if test="qzpj3ReasonSelf!=null and qzpj3ReasonSelf!=''">qzpj3ReasonSelf,</if>
+        <if test="qzpj3MarkSelf!=null and qzpj3MarkSelf!=''">qzpj3MarkSelf,</if>
+        <if test="qzpj4ReasonSelf!=null and qzpj4ReasonSelf!=''">qzpj4ReasonSelf,</if>
+        <if test="qzpj4MarkSelf!=null and qzpj4MarkSelf!=''">qzpj4MarkSelf,</if>
+        <if test="qzpj5ReasonSelf!=null and qzpj5ReasonSelf!=''">qzpj5ReasonSelf,</if>
+        <if test="qzpj5MarkSelf!=null and qzpj5MarkSelf!=''">qzpj5MarkSelf,</if>
+        <if test="qzpj6ReasonSelf!=null and qzpj6ReasonSelf!=''">qzpj6ReasonSelf,</if>
+        <if test="qzpj6MarkSelf!=null and qzpj6MarkSelf!=''">qzpj6MarkSelf,</if>
+        <if test="qzpj7ReasonSelf!=null and qzpj7ReasonSelf!=''">qzpj7ReasonSelf,</if>
+        <if test="qzpj7MarkSelf!=null and qzpj7MarkSelf!=''">qzpj7MarkSelf,</if>
+        uid,
+        mark_id,
+        mark_mark,
+        mark_month,
+        mark_time,
+        mark_JiDu,
+        mark_year
+        )values(
+        <if test="fj1ReasonSelf!=null and fj1ReasonSelf!=''">#{fj1ReasonSelf},</if>
+        <if test="fj1MarkSelf!=null and fj1MarkSelf!=''">#{fj1MarkSelf},</if>
+        <if test="fj2ReasonSelf!=null and fj2ReasonSelf!=''">#{fj2ReasonSelf},</if>
+        <if test="fj2MarkSelf!=null and fj2MarkSelf!=''">#{fj2MarkSelf},</if>
+        <if test="fj3ReasonSelf!=null and fj3ReasonSelf!=''">#{fj3ReasonSelf},</if>
+        <if test="fj3MarkSelf!=null and fj3MarkSelf!=''">#{fj3MarkSelf},</if>
+        <if test="fj4ReasonSelf!=null and fj4ReasonSelf!=''">#{fj4ReasonSelf},</if>
+        <if test="fj4MarkSelf!=null and fj4MarkSelf!=''">#{fj4MarkSelf},</if>
+        <if test="fj5ReasonSelf!=null and fj5ReasonSelf!=''">#{fj5ReasonSelf},</if>
+        <if test="fj5MarkSelf!=null and fj5MarkSelf!=''">#{fj5MarkSelf},</if>
+        <if test="fj6ReasonSelf!=null and fj6ReasonSelf!=''">#{fj6ReasonSelf},</if>
+        <if test="fj6MarkSelf!=null and fj6MarkSelf!=''">#{fj6MarkSelf},</if>
+        <if test="fj7ReasonSelf!=null and fj7ReasonSelf!=''">#{fj7ReasonSelf},</if>
+        <if test="fj7MarkSelf!=null and fj7MarkSelf!=''">#{fj7MarkSelf},</if>
+        <if test="jf1ReasonSelf!=null and jf1ReasonSelf!=''">#{jf1ReasonSelf},</if>
+        <if test="jf1MarkSelf!=null and jf1MarkSelf!=''">#{jf1MarkSelf},</if>
+        <if test="jf2ReasonSelf!=null and jf2ReasonSelf!=''">#{jf2ReasonSelf},</if>
+        <if test="jf2MarkSelf!=null and jf2MarkSelf!=''">#{jf2MarkSelf},</if>
+        <if test="jf3ReasonSelf!=null and jf3ReasonSelf!=''">#{jf3ReasonSelf},</if>
+        <if test="jf3MarkSelf!=null and jf3MarkSelf!=''">#{jf3MarkSelf},</if>
+        <if test="jf4ReasonSelf!=null and jf4ReasonSelf!=''">#{jf4ReasonSelf},</if>
+        <if test="jf4MarkSelf!=null and jf4MarkSelf!=''">#{jf4MarkSelf},</if>
+        <if test="jf5ReasonSelf!=null and jf5ReasonSelf!=''">#{jf5ReasonSelf},</if>
+        <if test="jf5MarkSelf!=null and jf5MarkSelf!=''">#{jf5MarkSelf},</if>
+        <if test="jf6ReasonSelf!=null and jf6ReasonSelf!=''">#{jf6ReasonSelf},</if>
+        <if test="jf6MarkSelf!=null and jf6MarkSelf!=''">#{jf6MarkSelf},</if>
+        <if test="zzsz1ReasonSelf!=null and zzsz1ReasonSelf!=''">#{zzsz1ReasonSelf},</if>
+        <if test="zzsz1MarkSelf!=null and zzsz1MarkSelf!=''">#{zzsz1MarkSelf},</if>
+        <if test="zzsz2ReasonSelf!=null and zzsz2ReasonSelf!=''">#{zzsz2ReasonSelf},</if>
+        <if test="zzsz2MarkSelf!=null and zzsz2MarkSelf!=''">#{zzsz2MarkSelf},</if>
+        <if test="zzsz3ReasonSelf!=null and zzsz3ReasonSelf!=''">#{zzsz3ReasonSelf},</if>
+        <if test="zzsz3MarkSelf!=null and zzsz3MarkSelf!=''">#{zzsz3MarkSelf},</if>
+        <if test="zzsz4ReasonSelf!=null and zzsz4ReasonSelf!=''">#{zzsz4ReasonSelf},</if>
+
+        <if test="zzsz4MarkSelf!=null and zzsz4MarkSelf!=''">#{zzsz4MarkSelf},</if>
+
+        <if test="zzsz5ReasonSelf!=null and zzsz5ReasonSelf!=''">#{zzsz5ReasonSelf},</if>
+        <if test="zzsz5MarkSelf!=null and zzsz5MarkSelf!=''">#{zzsz5MarkSelf},</if>
+        <if test="zzsz6ReasonSelf!=null and zzsz6ReasonSelf!=''">#{zzsz6ReasonSelf},</if>
+        <if test="zzsz6MarkSelf!=null and zzsz6MarkSelf!=''">#{zzsz6MarkSelf},</if>
+        <if test="zzsz7ReasonSelf!=null and zzsz7ReasonSelf!=''">#{zzsz7ReasonSelf},</if>
+
+        <if test="zzsz47ArkSelf!=null and zzsz47ArkSelf!=''">#{zzsz47ArkSelf},</if>
+
+        <if test="gwjn1ReasonSelf!=null and gwjn1ReasonSelf!=''">#{gwjn1ReasonSelf},</if>
+        <if test="gwjn1MarkSelf!=null and gwjn1MarkSelf!=''">#{gwjn1MarkSelf},</if>
+        <if test="gwjn2ReasonSelf!=null and gwjn2ReasonSelf!=''">#{gwjn2ReasonSelf},</if>
+        <if test="gwjn2MarkSelf!=null and gwjn2MarkSelf!=''">#{gwjn2MarkSelf},</if>
+        <if test="gwjn3ReasonSelf!=null and gwjn3ReasonSelf!=''">#{gwjn3ReasonSelf},</if>
+        <if test="gwjn3MarkSelf!=null and gwjn3MarkSelf!=''">#{gwjn3MarkSelf},</if>
+        <if test="gwjn4ReasonSelf!=null and gwjn4ReasonSelf!=''">#{gwjn4ReasonSelf},</if>
+        <if test="gwjn4MarkSelf!=null and gwjn4MarkSelf!=''">#{gwjn4MarkSelf},</if>
+        <if test="gzyj1ReasonSelf!=null and gzyj1ReasonSelf!=''">#{gzyj1ReasonSelf},</if>
+        <if test="gzyj1MarkSelf!=null and gzyj1MarkSelf!=''">#{gzyj1MarkSelf},</if>
+        <if test="gzyj2ReasonSelf!=null and gzyj2ReasonSelf!=''">#{gzyj2ReasonSelf},</if>
+        <if test="gzyj2MarkSelf!=null and gzyj2MarkSelf!=''">#{gzyj2MarkSelf},</if>
+        <if test="gzyj3ReasonSelf!=null and gzyj3ReasonSelf!=''">#{gzyj3ReasonSelf},</if>
+        <if test="gzyj3MarkSelf!=null and gzyj3MarkSelf!=''">#{gzyj3MarkSelf},</if>
+        <if test="gzyj4ReasonSelf!=null and gzyj4ReasonSelf!=''">#{gzyj4ReasonSelf},</if>
+        <if test="gzyj4MarkSelf!=null and gzyj4MarkSelf!=''">#{gzyj4MarkSelf},</if>
+        <if test="gzyj5ReasonSelf!=null and gzyj5ReasonSelf!=''">#{gzyj5ReasonSelf},</if>
+        <if test="gzyj5MarkSelf!=null and gzyj5MarkSelf!=''">#{gzyj5MarkSelf},</if>
+        <if test="gzyj6ReasonSelf!=null and gzyj6ReasonSelf!=''">#{gzyj6ReasonSelf},</if>
+        <if test="gzyj6MarkSelf!=null and gzyj6MarkSelf!=''">#{gzyj6MarkSelf},</if>
+        <if test="qzpj1ReasonSelf!=null and qzpj1ReasonSelf!=''">#{qzpj1ReasonSelf},</if>
+        <if test="qzpj1MarkSelf!=null and qzpj1MarkSelf!=''">#{qzpj1MarkSelf},</if>
+        <if test="qzpj2ReasonSelf!=null and qzpj2ReasonSelf!=''">#{qzpj2ReasonSelf},</if>
+        <if test="qzpj2MarkSelf!=null and qzpj2MarkSelf!=''">#{qzpj2MarkSelf},</if>
+        <if test="qzpj3ReasonSelf!=null and qzpj3ReasonSelf!=''">#{qzpj3ReasonSelf},</if>
+        <if test="qzpj3MarkSelf!=null and qzpj3MarkSelf!=''">#{qzpj3MarkSelf},</if>
+        <if test="qzpj4ReasonSelf!=null and qzpj4ReasonSelf!=''">#{qzpj4ReasonSelf},</if>
+        <if test="qzpj4MarkSelf!=null and qzpj4MarkSelf!=''">#{qzpj4MarkSelf},</if>
+        <if test="qzpj5ReasonSelf!=null and qzpj5ReasonSelf!=''">#{qzpj5ReasonSelf},</if>
+        <if test="qzpj5MarkSelf!=null and qzpj5MarkSelf!=''">#{qzpj5MarkSelf},</if>
+        <if test="qzpj6ReasonSelf!=null and qzpj6ReasonSelf!=''">#{qzpj6ReasonSelf},</if>
+        <if test="qzpj6MarkSelf!=null and qzpj6MarkSelf!=''">#{qzpj6MarkSelf},</if>
+        <if test="qzpj7ReasonSelf!=null and qzpj7ReasonSelf!=''">#{qzpj7ReasonSelf},</if>
+        <if test="qzpj7MarkSelf!=null and qzpj7MarkSelf!=''">#{qzpj7MarkSelf},</if>
+        #{uid},
+        #{markId},
+        #{markMark},
+        #{markMonth},
+        #{markTime},
+        #{markJiDu},
+        #{markYear})
+    </insert>
+
+    <update id="update" parameterType="SysDyzegMark">
+        update sys_dyzegmark_self
+        <set>
+            fj1ReasonSelf=#{fj1ReasonSelf},fj1MarkSelf=#{fj1MarkSelf},
+            fj2ReasonSelf=#{fj2ReasonSelf},fj2MarkSelf=#{fj2MarkSelf},
+            fj3ReasonSelf=#{fj3ReasonSelf},fj3MarkSelf=#{fj3MarkSelf},
+            fj4ReasonSelf=#{fj4ReasonSelf},fj4MarkSelf=#{fj4MarkSelf},
+            fj5ReasonSelf=#{fj5ReasonSelf},fj5MarkSelf=#{fj5MarkSelf},
+            fj6ReasonSelf=#{fj6ReasonSelf},fj6MarkSelf=#{fj6MarkSelf},
+            fj7ReasonSelf=#{fj7ReasonSelf},fj7MarkSelf=#{fj7MarkSelf},
+            jf1ReasonSelf=#{jf1ReasonSelf},jf1MarkSelf=#{jf1MarkSelf},
+            jf2ReasonSelf=#{jf2ReasonSelf},jf2MarkSelf=#{jf2MarkSelf},
+            jf3ReasonSelf=#{jf3ReasonSelf},jf3MarkSelf=#{jf3MarkSelf},
+            jf4ReasonSelf=#{jf4ReasonSelf},jf4MarkSelf=#{jf4MarkSelf},
+            jf5ReasonSelf=#{jf5ReasonSelf},jf5MarkSelf=#{jf5MarkSelf},
+            jf6ReasonSelf=#{jf6ReasonSelf},jf6MarkSelf=#{jf6MarkSelf},
+            zzsz1ReasonSelf=#{zzsz1ReasonSelf},zzsz1MarkSelf=#{zzsz1MarkSelf},
+            zzsz2ReasonSelf=#{zzsz2ReasonSelf},zzsz2MarkSelf=#{zzsz2MarkSelf},
+            zzsz3ReasonSelf=#{zzsz3ReasonSelf},zzsz3MarkSelf=#{zzsz3MarkSelf},
+            zzsz4ReasonSelf=#{zzsz4ReasonSelf},zzsz4MarkSelf=#{zzsz4MarkSelf},
+            zzsz5ReasonSelf=#{zzsz5ReasonSelf},zzsz5MarkSelf=#{zzsz5MarkSelf},
+            zzsz6ReasonSelf=#{zzsz6ReasonSelf},zzsz6MarkSelf=#{zzsz6MarkSelf},
+            zzsz7ReasonSelf=#{zzsz7ReasonSelf},zzsz47ArkSelf=#{zzsz47ArkSelf},
+            gwjn1ReasonSelf=#{gwjn1ReasonSelf},gwjn1MarkSelf=#{gwjn1MarkSelf},
+            gwjn2ReasonSelf=#{gwjn2ReasonSelf},gwjn2MarkSelf=#{gwjn2MarkSelf},
+            gwjn3ReasonSelf=#{gwjn3ReasonSelf},gwjn3MarkSelf=#{gwjn3MarkSelf},
+            gwjn4ReasonSelf=#{gwjn4ReasonSelf},gwjn4MarkSelf=#{gwjn4MarkSelf},
+            gzyj1ReasonSelf=#{gzyj1ReasonSelf},gzyj1MarkSelf=#{gzyj1MarkSelf},
+            gzyj2ReasonSelf=#{gzyj2ReasonSelf},gzyj2MarkSelf=#{gzyj2MarkSelf},
+            gzyj3ReasonSelf=#{gzyj3ReasonSelf},gzyj3MarkSelf=#{gzyj3MarkSelf},
+            gzyj4ReasonSelf=#{gzyj4ReasonSelf},gzyj4MarkSelf=#{gzyj4MarkSelf},
+            gzyj5ReasonSelf=#{gzyj5ReasonSelf},gzyj5MarkSelf=#{gzyj5MarkSelf},
+            gzyj6ReasonSelf=#{gzyj6ReasonSelf},gzyj6MarkSelf=#{gzyj6MarkSelf},
+            qzpj1ReasonSelf=#{qzpj1ReasonSelf},qzpj1MarkSelf=#{qzpj1MarkSelf},
+            qzpj2ReasonSelf=#{qzpj2ReasonSelf},qzpj2MarkSelf=#{qzpj2MarkSelf},
+            qzpj3ReasonSelf=#{qzpj3ReasonSelf},qzpj3MarkSelf=#{qzpj3MarkSelf},
+            qzpj4ReasonSelf=#{qzpj4ReasonSelf},qzpj4MarkSelf=#{qzpj4MarkSelf},
+            qzpj5ReasonSelf=#{qzpj5ReasonSelf},qzpj5MarkSelf=#{qzpj5MarkSelf},
+            qzpj6ReasonSelf=#{qzpj6ReasonSelf},qzpj6MarkSelf=#{qzpj6MarkSelf},
+            qzpj7ReasonSelf=#{qzpj7ReasonSelf},qzpj7MarkSelf=#{qzpj7MarkSelf},
+            mark_mark=#{markMark}
+        </set>
+        where mark_id = #{markId}
+    </update>
+
+</mapper>

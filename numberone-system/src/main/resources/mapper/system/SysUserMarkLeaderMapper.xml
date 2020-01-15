@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.numberone.system.mapper.SysUserMarkLeaderMapper">
+
+    <resultMap type="SysUserMarkLeader" id="SysUserMarkLeaderResult">
+        <id property="markLeaderId" column="mark_leader_id"/>
+
+        <result property="userName" column="user_name"/>
+        <result property="userId" column="user_id"/>
+        <result property="deptId" column="dept_id"/>
+
+        <result property="mid" column="mid"/>
+        <result property="markLeader" column="mark_leader"/>
+        <result property="markLeaderTime" column="mark_leader_time"/>
+        <result property="markLeaderReason" column="mark_leader_reason"/>
+        <result property="changeLeaderTime" column="change_leader_time"/>
+        <result property="changeLeaderReason" column="change_leader_reason"/>
+        <result property="changeLeaderTimes" column="change_leader_times"/>
+        <result property="markLeaderChange" column="mark_leader_change"/>
+
+        <result property="markId" column="mark_id"/>
+        <result property="markId" column="mark_id"/>
+        <result property="markSelf" column="mark_self"/>
+        <result property="markTime" column="mark_time"/>
+        <result property="markReason" column="mark_reason"/>
+        <result property="changeTime" column="change_time"/>
+        <result property="changeReason" column="change_reason"/>
+        <result property="markChange" column="mark_change"/>
+        <result property="changeTimes" column="change_times"/>
+        <result property="uid" column="uid"/>
+    </resultMap>
+
+    <!--规范！：传入mark_id用来查markSelf表中记录/传入mid用来查markLeader表中记录！-->
+    <select id="selectByDeptId" parameterType="Map" resultMap="SysUserMarkLeaderResult">
+        select u.user_name,u.user_id,u.dept_id,s.mark_self,s.mark_time,s.mark_reason,s.mark_id,s.change_time,s.change_reason,
+        s.mark_change,s.change_times,
+        l.mid,l.mark_leader,l.mark_leader_time,l.mark_leader_reason,l.mark_leader_id,l.change_leader_time,
+        l.change_leader_reason,l.change_leader_times,l.mark_leader_change
+        from  sys_user u
+        left join	mark_self s on u.user_id=s.uid
+        left join mark_leader l on s.mark_id=l.mid
+        where 1=1
+        <if test="deptId != null and deptId != ''">
+                and u.dept_id=#{deptId}
+        </if>
+        <if test="loginName != null and loginName != ''">
+                and u.user_name like concat('%', #{loginName}, '%')
+        </if>
+        <if test="phonenumber != null and phonenumber != ''">
+                and u.phonenumber like concat('%', #{phonenumber}, '%')
+        </if>
+        <if test="status != null and status != ''">
+                and u.status = #{status}
+        </if>
+        <if test="beginTime != null and beginTime != ''">
+                and s.mark_time &gt;= #{beginTime}
+        </if>
+        <if test="endTime != null and endTime != ''">
+                and s.mark_time &lt;= #{endTime}
+        </if>
+        <if test="mid != null and mid != ''">
+                and l.mid = #{mid}
+        </if>
+        <if test="markId != null and markId != ''">
+                and s.mark_id = #{markId}
+        </if>
+        <if test="markLeaderId != null and markLeaderId != ''">
+            and l.mark_leader_id = #{markLeaderId}
+        </if>
+    </select>
+
+    <insert id="insert" parameterType="com.numberone.system.domain.SysUserMarkLeader">
+        insert into mark_leader(
+        <if test="mid!=null and markLeaderId!=null and markLeader!=null and markLeaderReason!=null">mid,mark_leader_id,mark_leader,mark_leader_reason</if>
+        )values(
+        <if test="mid!=null and markLeaderId!=null and markLeader!=null and markLeaderReason!=null">#{mid},#{markLeaderId},#{markLeader},#{markLeaderReason}</if>
+        )
+    </insert>
+
+
+    <update id="update" parameterType="com.numberone.system.domain.SysUserMarkLeader">
+        update mark_leader
+        <set>
+            <if test="markLeaderChange!=null and markLeaderChange!=null">mark_leader_change = #{markLeaderChange},</if>
+            <if test="changeLeaderReason != null and changeLeaderReason != ''">change_leader_reason = #{changeLeaderReason},</if>
+            change_leader_times=#{changeLeaderTimes}+1
+        </set>
+        where mid=#{mid}
+    </update>
+
+</mapper>

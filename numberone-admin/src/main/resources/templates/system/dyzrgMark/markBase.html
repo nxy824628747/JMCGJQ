@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"/>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-role-add">
+        <div class="form-group">
+
+            <table class="table table-bordered">
+                <thead>
+                <tr bgcolor="#f5f5f5">
+                    <th style="width: 15%">内容</th>
+                    <th style="width: 45%">考核标准</th>
+                    <th style="width: 30%">加减分原因</th>
+                    <th style="width: 10%">得分</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--否决开始-->
+                <tr bgcolor="#f2dede">
+                    <td rowspan="7">否决条件</td>
+                    <td>1.发生撞“红线”及以上问题的</td>
+                    <td><input class="form-control" type="text" id="fj1ReasonSelf" name="fj1ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="fj1MarkSelf" name="fj1MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#f2dede">
+                    <!--<td>否决条件</td>-->
+                    <td>2.发生旷工行为的</td>
+                    <td><input class="form-control" type="text" id="fj2ReasonSelf" name="fj2ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="fj2MarkSelf" name="fj2MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#f2dede">
+                    <!--<td>否决条件</td>-->
+                    <td>3.发生打架斗殴等不良行为的</td>
+                    <td><input class="form-control" type="text" id="fj3ReasonSelf" name="fj3ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="fj3MarkSelf" name="fj3MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#f2dede">
+                    <!--<td>否决条件</td>-->
+                    <td>4.发生廉洁自律不良反映的</td>
+                    <td><input class="form-control" type="text" id="fj4ReasonSelf" name="fj4ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="fj4MarkSelf" name="fj4MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#f2dede">
+                    <!--<td>否决条件</td>-->
+                    <td>5.越级上访或参与迷信活动等造成不良影响的</td>
+                    <td><input class="form-control" type="text" id="fj5ReasonSelf" name="fj5ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="fj5MarkSelf" name="fj5MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#f2dede">
+                    <!--<td>否决条件</td>-->
+                    <td>6.参与赌博、出入不健康娱乐场所的</td>
+                    <td><input class="form-control" type="text" id="fj6ReasonSelf" name="fj6ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="fj6MarkSelf" name="fj6MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#f2dede">
+                    <!--<td>否决条件</td>-->
+                    <td>7. 违法违纪行为的，及经研究其他否决项目的问题</td>
+                    <td><input class="form-control" type="text" id="fj7ReasonSelf" name="fj7ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="fj7MarkSelf" name="fj7MarkSelf"/></td>
+                </tr>
+                <!--否决结束-->
+
+                <!--加分开始-->
+                <tr bgcolor="#dff0d8">
+                    <td rowspan="6">加分</td>
+                    <td>1.参加技术比武获得总公司名次加15分，获得集团公司名次加10分，在段及以上组织的技能竞赛中，取得总公司，
+                        集团公司，获得车务段前3名的，加3-5分
+                    </td>
+                    <td><input class="form-control" type="text" id="jf1ReasonSelf" name="jf1ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="jf1MarkSelf" name="jf1MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#dff0d8">
+                    <td>2. 提出“金点子”、合理化建议被车务段及以上采纳的，加3-5分
+                    </td>
+                    <td><input class="form-control" type="text" id="jf2ReasonSelf" name="jf2ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="jf2MarkSelf" name="jf2MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#dff0d8">
+                    <td>3. 发现安全重大隐患、防止安全事故、，受到段级及以上表扬表彰或通报嘉奖的（以文件公布为准），
+                        集团公司及以上通报表彰的每件加5-10分，段级每件加2-5分
+                    </td>
+                    <td><input class="form-control" type="text" id="jf3ReasonSelf" name="jf3ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="jf3MarkSelf" name="jf3MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#dff0d8">
+                    <td>4. 围绕安全、运输和技术难题立项攻关取得实效，受到总公司、集团公司、段表彰的分别加10分、5分、3分</td>
+                    <td><input class="form-control" type="text" id="jf4ReasonSelf" name="jf4ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="jf4MarkSelf" name="jf4MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#dff0d8">
+                    <td>5. 做好人好事、见义勇为事迹受到表彰奖励或媒体表扬加3-10分</td>
+                    <td><input class="form-control" type="text" id="jf5ReasonSelf" name="jf5ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="jf5MarkSelf" name="jf5MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#dff0d8">
+                    <td>6.其他受到集团公司及以上表彰奖励的，加3-10分</td>
+                    <td><input class="form-control" type="text" id="jf6ReasonSelf" name="jf6ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="jf6MarkSelf" name="jf6MarkSelf"/></td>
+                </tr>
+                <!--加分结束-->
+                <!--政治素质开始-->
+                <tr bgcolor="#fcf8e3">
+                    <td rowspan="7">政治素质 （基础分25分）
+                        ：讲政治有信念，讲规矩有纪律，认真学习政治理论，用习近平新时代中国特色社会主义思想武装头脑，
+                        自觉参加组织生活，认真行使党员权利、履行党员义务。
+                    </td>
+                    <td>1.迟交交纳党费减1分</td>
+                    <td><input class="form-control" type="text" id="zzsz1ReasonSelf" name="zzsz1ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="zzsz1MarkSelf" name="zzsz1MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>2.未按要求佩戴党员徽章，每次减0.5分</td>
+                    <td><input class="form-control" type="text" id="zzsz2ReasonSelf" name="zzsz2ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="zzsz2MarkSelf" name="zzsz2MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>3.政治理论学习无学习记录、学习体会减1分，政治理论考试成绩不达标减2分</td>
+                    <td><input class="form-control" type="text" id="zzsz3ReasonSelf" name="zzsz3ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="zzsz3MarkSelf" name="zzsz3MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>4.参加党内组织生活、实践活动不积极，迟到一次减1分，无故不参加减3分</td>
+                    <td><input class="form-control" type="text" id="zzsz4ReasonSelf" name="zzsz4ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="zzsz4MarkSelf" name="zzsz4MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>5.对身边的一些错误言论观点没有批评教育和正面引导，每次减2分</td>
+                    <td><input class="form-control" type="text" id="zzsz5ReasonSelf" name="zzsz5ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="zzsz5MarkSelf" name="zzsz5MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>6.传播小道消息、散布不实言论，或网络上转发不良不实信息，尚未造成影响的，每次减3分</td>
+                    <td><input class="form-control" type="text" id="zzsz6ReasonSelf" name="zzsz6ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="zzsz6MarkSelf" name="zzsz6MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>7.未按时开展党员责任岗自评、互评减1分</td>
+                    <td><input class="form-control" type="text" id="zzsz7ReasonSelf" name="zzsz7ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="zzsz47arkSelf" name="zzsz7MarkSelf"/></td>
+                </tr>
+                <!--政治素质结束-->
+                <!--岗位技能开始-->
+                <tr bgcolor="#fcf8e3">
+                    <td rowspan="4">岗位技能（基础分25分）
+                        ：深入学习专业知识，钻研本职业务，熟练掌握岗位技能，率先达到岗位标准，做本岗位的行家里手。
+                    </td>
+                    <td>1.不按时参加业务知识学习，迟到一次减1分，无故不参加减3分</td>
+                    <td><input class="form-control" type="text" id="gwjn1ReasonSelf" name="gwjn1ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="gwjn1MarkSelf" name="gwjn1MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>2.车站业务考试成绩不达标减2分
+                    </td>
+                    <td><input class="form-control" type="text" id="gwjn2ReasonSelf" name="gwjn2ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="gwjn2MarkSelf" name="gwjn2MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>3.上级抽考成绩不合格或受到通报批评的减3-5分</td>
+                    <td><input class="form-control" type="text" id="gwjn3ReasonSelf" name="gwjn3ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="gwjn3MarkSelf" name="gwjn3MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>4.标准化作业落实不到位、应急处理能力差，造成不良影响减2-5分</td>
+                    <td><input class="form-control" type="text" id="gwjn4ReasonSelf" name="gwjn4ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="gwjn4MarkSelf" name="gwjn4MarkSelf"/></td>
+                </tr>
+                <!--岗位技能结束-->
+                <!--工作业绩开始-->
+                <tr bgcolor="#fcf8e3">
+                    <td rowspan="6">工作业绩（基础分25分）
+                        ：讲奉献有作为，爱岗敬业，履职尽责，自身无违章、无违纪、无事故，优质高效地完成各项工作任务。
+                    </td>
+                    <td>1.发生迟到、早退等违反工作纪律的每次减1分</td>
+                    <td><input class="form-control" type="text" id="gzyj1ReasonSelf" name="gzyj1ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="gzyj1MarkSelf" name="gzyj1MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>2.党员个人发生严重“两违”问题每件减10分，发生A类“两违”问题每件减5分，B类“两违”问题每件减4分，
+                        C类“两违”问题每件减3分，D类“两违”问题每件减2分
+                    </td>
+                    <td><input class="form-control" type="text" id="gzyj2ReasonSelf" name="gzyj2ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="gzyj2MarkSelf" name="gzyj2MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>3.不积极参加建言献策、开展立项攻关的减1分</td>
+                    <td><input class="form-control" type="text" id="gzyj3ReasonSelf" name="gzyj3ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="gzyj3MarkSelf" name="gzyj3MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>4.公开承诺未兑现，每项减2分</td>
+                    <td><input class="form-control" type="text" id="gzyj4ReasonSelf" name="gzyj4ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="gzyj4MarkSelf" name="gzyj4MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>5.无故不参加生产突击任务、义务奉献等党内活动，每次减3分</td>
+                    <td><input class="form-control" type="text" id="gzyj5ReasonSelf" name="gzyj5ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="gzyj5MarkSelf" name="gzyj5MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>6.未完成组织交办的任务，每项减3-5分</td>
+                    <td><input class="form-control" type="text" id="gzyj6ReasonSelf" name="gzyj6ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="gzyj6MarkSelf" name="gzyj6MarkSelf"/></td>
+                </tr>
+                <!--工作业绩结束-->
+                <!--群众评价开始-->
+                <tr bgcolor="#fcf8e3">
+                    <td rowspan="7">群众评价（基础分25分）
+                        :讲道德有品行，牢记党的宗旨，服务意识强，任劳任怨，勇挑重担，积极传播正能量，职工群众信任，
+                        满意度较高。
+                    </td>
+                    <td>1.言行举止不文明每次减1-3分</td>
+                    <td><input class="form-control" type="text" id="qzpj1ReasonSelf" name="qzpj1ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="qzpj1MarkSelf" name="qzpj1MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>2.发生责任旅客、货主批评投诉的一次减3-5分</td>
+                    <td><input class="form-control" type="text" id="qzpj2ReasonSelf" name="qzpj2ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="qzpj2MarkSelf" name="qzpj2MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>3.岗位卫生不达标减1-2分</td>
+                    <td><input class="form-control" type="text" id="qzpj3ReasonSelf" name="qzpj3ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="qzpj3MarkSelf" name="qzpj3MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>4.节支降耗意识不强，造成水电、办公用材浪费的每次减1-3分</td>
+                    <td><input class="form-control" type="text" id="qzpj4ReasonSelf" name="qzpj4ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="qzpj4MarkSelf" name="qzpj4MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>5.损坏公物的每次减3-5分</td>
+                    <td><input class="form-control" type="text" id="qzpj5ReasonSelf" name="qzpj5ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="qzpj5MarkSelf" name="qzpj5MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>6. 对群众反映的困难和问题，不能够及时帮助解决或者按照程序汇报每次减1-3分</td>
+                    <td><input class="form-control" type="text" id="qzpj6ReasonSelf" name="qzpj6ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="qzpj6MarkSelf" name="qzpj6MarkSelf"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>7. 其他违背职业道德、社会公德、家庭美德等不良问题的减5-10分</td>
+                    <td><input class="form-control" type="text" id="qzpj7ReasonSelf" name="qzpj7ReasonSelf"/></td>
+                    <td><input class="form-control" type="text" id="qzpj7MarkSelf" name="qzpj7MarkSelf"/></td>
+                </tr>
+                <!--群众评价结束-->
+                </tbody>
+            </table>
+
+
+        </div>
+    </form>
+</div>
+<div th:include="include::footer"></div>
+
+<script type="text/javascript">
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            add();
+        }
+    }
+
+    function add() {
+        var fj1ReasonSelf = $("input[name='fj1ReasonSelf']").val();
+        var fj1MarkSelf = $("input[name='fj1MarkSelf']").val();
+        var fj2ReasonSelf = $("input[name='fj2ReasonSelf']").val();
+        var fj2MarkSelf = $("input[name='fj2MarkSelf']").val();
+        var fj3ReasonSelf = $("input[name='fj3ReasonSelf']").val();
+        var fj3MarkSelf = $("input[name='fj3MarkSelf']").val();
+        var fj4ReasonSelf = $("input[name='fj4ReasonSelf']").val();
+        var fj4MarkSelf = $("input[name='fj4MarkSelf']").val();
+        var fj5ReasonSelf = $("input[name='fj5ReasonSelf']").val();
+        var fj5MarkSelf = $("input[name='fj5MarkSelf']").val();
+        var fj6ReasonSelf = $("input[name='fj6ReasonSelf']").val();
+        var fj6MarkSelf = $("input[name='fj6MarkSelf']").val();
+        var fj7ReasonSelf = $("input[name='fj7ReasonSelf']").val();
+        var fj7MarkSelf = $("input[name='fj7MarkSelf']").val();
+
+        var jf1ReasonSelf = $("input[name='jf1ReasonSelf']").val();
+        var jf1MarkSelf = $("input[name='jf1MarkSelf']").val();
+        var jf2ReasonSelf = $("input[name='jf2ReasonSelf']").val();
+        var jf2MarkSelf = $("input[name='jf2MarkSelf']").val();
+        var jf3ReasonSelf = $("input[name='jf3ReasonSelf']").val();
+        var jf3MarkSelf = $("input[name='jf3MarkSelf']").val();
+        var jf4ReasonSelf = $("input[name='jf4ReasonSelf']").val();
+        var jf4MarkSelf = $("input[name='jf4MarkSelf']").val();
+        var jf5ReasonSelf = $("input[name='jf5ReasonSelf']").val();
+        var jf5MarkSelf = $("input[name='jf5MarkSelf']").val();
+        var jf6ReasonSelf = $("input[name='jf6ReasonSelf']").val();
+        var jf6MarkSelf = $("input[name='jf6MarkSelf']").val();
+
+        var zzsz1ReasonSelf = $("input[name='zzsz1ReasonSelf']").val();
+        var zzsz1MarkSelf = $("input[name='zzsz1MarkSelf']").val();
+        var zzsz2ReasonSelf = $("input[name='zzsz2ReasonSelf']").val();
+        var zzsz2MarkSelf = $("input[name='zzsz2MarkSelf']").val();
+        var zzsz3ReasonSelf = $("input[name='zzsz3ReasonSelf']").val();
+        var zzsz3MarkSelf = $("input[name='zzsz3MarkSelf']").val();
+        var zzsz4ReasonSelf = $("input[name='zzsz4ReasonSelf']").val();
+        var zzsz4MarkSelf = $("input[name='zzsz4MarkSelf']").val();
+        var zzsz5ReasonSelf = $("input[name='zzsz5ReasonSelf']").val();
+        var zzsz5MarkSelf = $("input[name='zzsz5MarkSelf']").val();
+        var zzsz6ReasonSelf = $("input[name='zzsz6ReasonSelf']").val();
+        var zzsz6MarkSelf = $("input[name='zzsz6MarkSelf']").val();
+        var zzsz7ReasonSelf = $("input[name='zzsz7ReasonSelf']").val();
+        var zzsz7MarkSelf = $("input[name='zzsz7MarkSelf']").val();
+
+        var gwjn1ReasonSelf = $("input[name='gwjn1ReasonSelf']").val();
+        var gwjn1MarkSelf = $("input[name='gwjn1MarkSelf']").val();
+        var gwjn2ReasonSelf = $("input[name='gwjn2ReasonSelf']").val();
+        var gwjn2MarkSelf = $("input[name='gwjn2MarkSelf']").val();
+        var gwjn3ReasonSelf = $("input[name='gwjn3ReasonSelf']").val();
+        var gwjn3MarkSelf = $("input[name='gwjn3MarkSelf']").val();
+        var gwjn4ReasonSelf = $("input[name='gwjn4ReasonSelf']").val();
+        var gwjn4MarkSelf = $("input[name='gwjn4MarkSelf']").val();
+
+        var gzyj1ReasonSelf = $("input[name='gzyj1ReasonSelf']").val();
+        var gzyj1MarkSelf = $("input[name='gzyj1MarkSelf']").val();
+        var gzyj2ReasonSelf = $("input[name='gzyj2ReasonSelf']").val();
+        var gzyj2MarkSelf = $("input[name='gzyj2MarkSelf']").val();
+        var gzyj3ReasonSelf = $("input[name='gzyj3ReasonSelf']").val();
+        var gzyj3MarkSelf = $("input[name='gzyj3MarkSelf']").val();
+        var gzyj4ReasonSelf = $("input[name='gzyj4ReasonSelf']").val();
+        var gzyj4MarkSelf = $("input[name='gzyj4MarkSelf']").val();
+        var gzyj5ReasonSelf = $("input[name='gzyj5ReasonSelf']").val();
+        var gzyj5MarkSelf = $("input[name='gzyj5MarkSelf']").val();
+        var gzyj6ReasonSelf = $("input[name='gzyj6ReasonSelf']").val();
+        var gzyj6MarkSelf = $("input[name='gzyj6MarkSelf']").val();
+
+        var qzpj1ReasonSelf = $("input[name='qzpj1ReasonSelf']").val();
+        var qzpj1MarkSelf = $("input[name='qzpj1MarkSelf']").val();
+        var qzpj2ReasonSelf = $("input[name='qzpj2ReasonSelf']").val();
+        var qzpj2MarkSelf = $("input[name='qzpj2MarkSelf']").val();
+        var qzpj3ReasonSelf = $("input[name='qzpj3ReasonSelf']").val();
+        var qzpj3MarkSelf = $("input[name='qzpj3MarkSelf']").val();
+        var qzpj4ReasonSelf = $("input[name='qzpj4ReasonSelf']").val();
+        var qzpj4MarkSelf = $("input[name='qzpj4MarkSelf']").val();
+        var qzpj5ReasonSelf = $("input[name='qzpj5ReasonSelf']").val();
+        var qzpj5MarkSelf = $("input[name='qzpj5MarkSelf']").val();
+        var qzpj6ReasonSelf = $("input[name='qzpj6ReasonSelf']").val();
+        var qzpj6MarkSelf = $("input[name='qzpj6MarkSelf']").val();
+        var qzpj7ReasonSelf = $("input[name='qzpj7ReasonSelf']").val();
+        var qzpj7MarkSelf = $("input[name='qzpj7MarkSelf']").val();
+        var datas = {
+            fj1ReasonSelf: fj1ReasonSelf,
+            fj1MarkSelf: fj1MarkSelf,
+            fj2ReasonSelf: fj2ReasonSelf,
+            fj2MarkSelf: fj2MarkSelf,
+            fj3ReasonSelf: fj3ReasonSelf,
+            fj3MarkSelf: fj3MarkSelf,
+            fj4ReasonSelf: fj4ReasonSelf,
+            fj4MarkSelf: fj4MarkSelf,
+            fj5ReasonSelf: fj5ReasonSelf,
+            fj5MarkSelf: fj5MarkSelf,
+            fj6ReasonSelf: fj6ReasonSelf,
+            fj6MarkSelf: fj6MarkSelf,
+            fj7ReasonSelf: fj7ReasonSelf,
+            fj7MarkSelf: fj7MarkSelf,
+            jf1ReasonSelf: jf1ReasonSelf,
+            jf1MarkSelf: jf1MarkSelf,
+            jf2ReasonSelf: jf2ReasonSelf,
+            jf2MarkSelf: jf2MarkSelf,
+            jf3ReasonSelf: jf3ReasonSelf,
+            jf3MarkSelf: jf3MarkSelf,
+            jf4ReasonSelf: jf4ReasonSelf,
+            jf4MarkSelf: jf4MarkSelf,
+            jf5ReasonSelf: jf5ReasonSelf,
+            jf5MarkSelf: jf5MarkSelf,
+            jf6ReasonSelf: jf6ReasonSelf,
+            jf6MarkSelf: jf6MarkSelf,
+            zzsz1ReasonSelf: zzsz1ReasonSelf,
+            zzsz1MarkSelf: zzsz1MarkSelf,
+            zzsz2ReasonSelf: zzsz2ReasonSelf,
+            zzsz2MarkSelf: zzsz2MarkSelf,
+            zzsz3ReasonSelf: zzsz3ReasonSelf,
+            zzsz3MarkSelf: zzsz3MarkSelf,
+            zzsz4ReasonSelf: zzsz4ReasonSelf,
+            zzsz4MarkSelf: zzsz4MarkSelf,
+            zzsz5ReasonSelf: zzsz5ReasonSelf,
+            zzsz5MarkSelf: zzsz5MarkSelf,
+            zzsz6ReasonSelf: zzsz6ReasonSelf,
+            zzsz6MarkSelf: zzsz6MarkSelf,
+            zzsz7ReasonSelf: zzsz7ReasonSelf,
+            zzsz7MarkSelf: zzsz7MarkSelf,
+
+            gwjn1ReasonSelf: gwjn1ReasonSelf,
+            gwjn1MarkSelf: gwjn1MarkSelf,
+            gwjn2ReasonSelf: gwjn2ReasonSelf,
+            gwjn2MarkSelf: gwjn2MarkSelf,
+            gwjn3ReasonSelf: gwjn3ReasonSelf,
+            gwjn3MarkSelf: gwjn3MarkSelf,
+            gwjn4ReasonSelf: gwjn4ReasonSelf,
+            gwjn4MarkSelf: gwjn4MarkSelf,
+
+            gzyj1ReasonSelf: gzyj1ReasonSelf,
+            gzyj1MarkSelf: gzyj1MarkSelf,
+            gzyj2ReasonSelf: gzyj2ReasonSelf,
+            gzyj2MarkSelf: gzyj2MarkSelf,
+            gzyj3ReasonSelf: gzyj3ReasonSelf,
+            gzyj3MarkSelf: gzyj3MarkSelf,
+            gzyj4ReasonSelf: gzyj4ReasonSelf,
+            gzyj4MarkSelf: gzyj4MarkSelf,
+            gzyj5ReasonSelf: gzyj5ReasonSelf,
+            gzyj5MarkSelf: gzyj5MarkSelf,
+            gzyj6ReasonSelf: gzyj6ReasonSelf,
+            gzyj6MarkSelf: gzyj6MarkSelf,
+            qzpj1ReasonSelf: qzpj1ReasonSelf,
+            qzpj1MarkSelf: qzpj1MarkSelf,
+            qzpj2ReasonSelf: qzpj2ReasonSelf,
+            qzpj2MarkSelf: qzpj2MarkSelf,
+            qzpj3ReasonSelf: qzpj3ReasonSelf,
+            qzpj3MarkSelf: qzpj3MarkSelf,
+            qzpj4ReasonSelf: qzpj4ReasonSelf,
+            qzpj4MarkSelf: qzpj4MarkSelf,
+            qzpj5ReasonSelf: qzpj5ReasonSelf,
+            qzpj5MarkSelf: qzpj5MarkSelf,
+            qzpj6ReasonSelf: qzpj6ReasonSelf,
+            qzpj6MarkSelf: qzpj6MarkSelf,
+            qzpj7ReasonSelf: qzpj7ReasonSelf,
+            qzpj7MarkSelf: qzpj7MarkSelf,
+        };
+        console.log(datas);
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url: ctx + "system/mark/markSelf/add",
+            data: datas,
+            async: false,
+            error: function (request) {
+                $.modal.alertError("系统错误");
+            },
+            success: function (data) {
+                $.operate.successCallback(data);
+            }
+        });
+    }
+</script>
+</body>
+</html>

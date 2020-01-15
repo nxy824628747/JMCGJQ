@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.numberone.system.mapper.SysUserMarkDZBMapper">
+
+    <resultMap type="SysUserMarkDzb" id="SysUserMarkDzbResult">
+        <id property="markDzbId" column="mark_DZB_id"/>
+
+        <result property="mlid" column="mlid"/>
+        <result property="markDzb" column="mark_DZB"/>
+        <result property="markDzbTime" column="mark_DZB_time"/>
+        <result property="markDzbReason" column="mark_DZB_reason"/>
+        <result property="changeDzbTime" column="change_DZB_time"/>
+        <result property="changeDzbReason" column="change_DZB_reason"/>
+        <result property="changeDzbTimes" column="change_DZB_times"/>
+        <result property="markDzbChange" column="mark_DZB_change"/>
+        <result property="markDzbHistory" column="mark_DZB_history"/>
+    </resultMap>
+
+    <update id="update" parameterType="com.numberone.system.domain.SysUserMarkDzb">
+        update mark_dzb
+        <set>
+            <if test="markDzbChange!=null and
+                changeDzbReason != null and changeDzbTimes!=null
+                and markDzbHistory!=null ">
+                mark_DZB_change = #{markDzbChange},change_DZB_reason = #{changeDzbReason},
+                change_DZB_times=#{changeDzbTimes}+1,mark_DZB_history=#{markDzbHistory}
+            </if>
+        </set>
+        where mlid=#{mlid}
+    </update>
+
+    <select id="select" parameterType="Map" resultMap="SysUserMarkDzbResult">
+        select d.mlid,d.mark_DZB_id,d.mark_DZB,d.mark_DZB_reason,d.mark_DZB_time,d.mark_DZB_change,d.change_DZB_reason,
+        d.change_DZB_time,d.change_DZB_times,d.mark_DZB_history
+        from sys_user u
+        left join mark_self s on u.user_id=s.uid
+        left join mark_leader l on s.mark_id=l.mid
+        left join mark_dzb d on l.mark_leader_id = d.mlid
+        where 1=1
+        <if test="deptId != null and deptId != ''">
+            and u.dept_id=#{deptId}
+        </if>
+        <if test="markDzbId != null and markDzbId != ''">
+            and d.mark_DZB_id=#{markDzbId}
+        </if>
+        <if test="beginTime != null and beginTime != ''">
+            and s.markDzbTime &gt;= #{beginTime}
+        </if>
+        <if test="endTime != null and endTime != ''">
+            and s.markDzbTime &lt;= #{endTime}
+        </if>
+        <if test="loginName != null and loginName != ''">
+            and u.user_name like concat('%', #{loginName}, '%')
+        </if>
+        <if test="phonenumber != null and phonenumber != ''">
+            and u.phonenumber like concat('%', #{phonenumber}, '%')
+        </if>
+        <if test="mid != null and mid != ''">
+            and l.mid = #{mid}
+        </if>
+        <if test="mlid != null and mlid != ''">
+            and d.mlid = #{mlid}
+        </if>
+    </select>
+
+    <insert id="insert" parameterType="com.numberone.system.domain.SysUserMarkDzb">
+        insert into mark_dzb(
+        <if test="mlid!=null and markDzbId!=null and markDzb!=null and markDzbReason!=null">
+            mlid,mark_DZB_id,mark_DZB,mark_DZB_reason
+        </if>
+        )values(
+        <if test="mlid!=null and markDzbId!=null and markDzb!=null and markDzbReason!=null">
+            #{mlid},#{markDzbId},#{markDzb},#{markDzbReason}
+        </if>
+        )
+    </insert>
+
+
+</mapper>

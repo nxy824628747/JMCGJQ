@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.numberone.system.mapper.SysUserMarkSelfMapper">
+    <resultMap type="SysUserMarkSelf" id="SysUserMarkSelfResult">
+        <id property="markId" column="mark_id"/>
+        <result property="markSelf" column="mark_self"/>
+        <result property="markTime" column="mark_time"/>
+        <result property="markReason" column="mark_reason"/>
+        <result property="changeTime" column="change_time"/>
+        <result property="changeReason" column="change_reason"/>
+        <result property="markChange" column="mark_change"/>
+        <result property="changeTimes" column="change_times"/>
+        <result property="uid" column="uid"/>
+    </resultMap>
+
+    <select id="selectByMid" parameterType="String" resultMap="SysUserMarkSelfResult">
+        select uid,change_times,mark_change,change_reason,change_time,mark_reason,mark_time,
+        mark_self,mark_id from mark_self where  mark_id=#{markId}
+    </select>
+
+    <select id="selectAll" parameterType="Long" resultMap="SysUserMarkSelfResult">
+        select uid,change_times,mark_change,change_reason,change_time,mark_reason,mark_time,
+        mark_self,mark_id from mark_self where uid=#{uid}
+    </select>
+
+    <select id="selectByYearAndMon" parameterType="hashmap" resultMap="SysUserMarkSelfResult">
+        select uid,change_times,mark_change,change_reason,change_time,mark_reason,mark_time,
+        mark_self,mark_id from mark_self where uid=#{uid} and mark_time like CONCAT('%',#{yearAndMon},'%')
+    </select>
+
+
+    <delete id="delete" parameterType="com.numberone.system.domain.SysUserMarkSelf">
+        delete from mark_self where mark_id=#{markId}
+    </delete>
+
+    <update id="update" parameterType="com.numberone.system.domain.SysUserMarkSelf">
+        update mark_self
+        <set>
+            <if test="markChange != null and markChange != 0">mark_change = #{markChange},</if>
+            <if test="changeReason != null and changeReason != ''">change_reason = #{changeReason},</if>
+            change_times=#{changeTimes}+1
+        </set>
+        where uid=#{uid} and mark_id=#{markId}
+    </update>
+
+    <insert id="insert" parameterType="com.numberone.system.domain.SysUserMarkSelf">
+        insert into mark_self(
+        <if test="uid!=null and markSelf!=null and markReason!=null and markId!=null">uid,mark_self,mark_reason,mark_id</if>
+        )values(
+        <if test="uid != null and markSelf != '' and markReason!=''">#{uid},#{markSelf},#{markReason},#{markId}</if>
+        )
+    </insert>
+</mapper>

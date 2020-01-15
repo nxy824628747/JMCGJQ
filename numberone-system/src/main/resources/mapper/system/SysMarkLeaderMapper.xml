@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.numberone.system.mapper.SysMarkLeaderMapper">
+    <resultMap type="SysMark" id="SysMarkSelfResult">
+        <id property="markId" column="mark_id"/>
+        <result property="markMark" column="mark_mark"/>
+        <result property="markMonth" column="mark_month"/>
+        <result property="markJiDu" column="mark_JiDu"/>
+        <result property="uid" column="uid"/>
+        <result property="markTime" column="mark_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="markYear" column="mark_year"/>
+
+        <result property="fj1ReasonSelf" column="fj1ReasonSelf"/>
+        <result property="fj1MarkSelf" column="fj1MarkSelf"/>
+        <result property="fj2ReasonSelf" column="fj2ReasonSelf"/>
+        <result property="fj2MarkSelf" column="fj2MarkSelf"/>
+        <result property="fj3ReasonSelf" column="fj3ReasonSelf"/>
+        <result property="fj3MarkSelf" column="fj3MarkSelf"/>
+        <result property="fj4ReasonSelf" column="fj4ReasonSelf"/>
+        <result property="fj4MarkSelf" column="fj4MarkSelf"/>
+        <result property="fj5ReasonSelf" column="fj5ReasonSelf"/>
+        <result property="fj5MarkSelf" column="fj5MarkSelf"/>
+        <result property="jf1ReasonSelf" column="jf1ReasonSelf"/>
+        <result property="jf1MarkSelf" column="jf1MarkSelf"/>
+        <result property="jf2ReasonSelf" column="jf2ReasonSelf"/>
+        <result property="jf2MarkSelf" column="jf2MarkSelf"/>
+        <result property="jf3ReasonSelf" column="jf3ReasonSelf"/>
+        <result property="jf3MarkSelf" column="jf3MarkSelf"/>
+        <result property="jf4ReasonSelf" column="jf4ReasonSelf"/>
+        <result property="jf4MarkSelf" column="jf4MarkSelf"/>
+        <result property="jf5ReasonSelf" column="jf5ReasonSelf"/>
+        <result property="jf5MarkSelf" column="jf5MarkSelf"/>
+        <result property="jf6ReasonSelf" column="jf6ReasonSelf"/>
+        <result property="jf6MarkSelf" column="jf6MarkSelf"/>
+        <result property="llxz1ReasonSelf" column="llxz1ReasonSelf"/>
+        <result property="llxz1MarkSelf" column="llxz1MarkSelf"/>
+        <result property="llxz2ReasonSelf" column="llxz2ReasonSelf"/>
+        <result property="llxz2MarkSelf" column="llxz2MarkSelf"/>
+        <result property="llxz3ReasonSelf" column="llxz3ReasonSelf"/>
+        <result property="llxz3MarkSelf" column="llxz3MarkSelf"/>
+        <result property="llxz4ReasonSelf" column="llxz4ReasonSelf"/>
+        <result property="llxz4MarkSelf" column="llxz4MarkSelf"/>
+        <result property="zygw1ReasonSelf" column="zygw1ReasonSelf"/>
+        <result property="zygw1MarkSelf" column="zygw1MarkSelf"/>
+        <result property="zygw2ReasonSelf" column="zygw2ReasonSelf"/>
+        <result property="zygw2MarkSelf" column="zygw2MarkSelf"/>
+        <result property="zygw3ReasonSelf" column="zygw3ReasonSelf"/>
+        <result property="zygw3MarkSelf" column="zygw3MarkSelf"/>
+        <result property="jsyw1ReasonSelf" column="jsyw1ReasonSelf"/>
+        <result property="jsyw1MarkSelf" column="jsyw1MarkSelf"/>
+        <result property="jsyw2ReasonSelf" column="jsyw2ReasonSelf"/>
+        <result property="jsyw2MarkSelf" column="jsyw2MarkSelf"/>
+        <result property="jsyw3ReasonSelf" column="jsyw3ReasonSelf"/>
+        <result property="jsyw3MarkSelf" column="jsyw3MarkSelf"/>
+        <result property="jsyw4ReasonSelf" column="jsyw4ReasonSelf"/>
+        <result property="jsyw4MarkSelf" column="jsyw4MarkSelf"/>
+        <result property="zgsx1ReasonSelf" column="zgsx1ReasonSelf"/>
+        <result property="zgsx1MarkSelf" column="zgsx1MarkSelf"/>
+        <result property="zgsx2ReasonSelf" column="zgsx2ReasonSelf"/>
+        <result property="zgsx2MarkSelf" column="zgsx2MarkSelf"/>
+        <result property="zgsx3ReasonSelf" column="zgsx3ReasonSelf"/>
+        <result property="zgsx3MarkSelf" column="zgsx3MarkSelf"/>
+        <result property="zgsx4ReasonSelf" column="zgsx4ReasonSelf"/>
+        <result property="zgsx4MarkSelf" column="zgsx4MarkSelf"/>
+    </resultMap>
+
+
+    <resultMap type="SysMarkImport" id="SysMarkImportResult">
+        <id property="markId" column="markId"/>
+        <result property="deptName" column="deptName"/>
+        <result property="userName" column="userName"/>
+        <result property="markYear" column="markYear"/>
+        <result property="markJiDu" column="markJiDu"/>
+        <result property="markMonth" column="markMonth"/>
+        <result property="markMarkSelf" column="markMarkSelf"/>
+        <result property="markMarkLeader" column="markMarkLeader"/>
+        <result property="markMarkDZB" column="markMarkDZB"/>
+    </resultMap>
+    <!--
+        页面爬取数据拼接语句
+        var list=document.getElementsByClassName("form-control");
+        var strData="";
+        //对表单中所有的input进行遍历
+        for(i=0;i<list.length;i++){
+	        var idi=list[i].id;
+	        if(idi.indexOf("Mark")!=-1){
+		    strData+='<if test="'+idi+"!=null and "+idi+'!=''"> '+idi+',</if>';
+            }else{
+                strData+='<if test="'+idi+"!=null and "+idi+'!=\'\'"> '+idi+',</if>';
+            }
+        }
+        console.log(strData);
+        -->
+
+    <!--
+    create table sys_mark_self(
+        `fj1ReasonSelf` varchar(500),`fj1MarkSelf` decimal(4,2),`fj2ReasonSelf` varchar(500),
+        `fj2MarkSelf` decimal(4,2),`fj3ReasonSelf` varchar(500),`fj3MarkSelf` decimal(4,2),`fj4ReasonSelf` varchar(500),
+        `fj4MarkSelf` decimal(4,2),`fj5ReasonSelf` varchar(500),`fj5MarkSelf` decimal(4,2),`jf1ReasonSelf` varchar(500),
+        `jf1MarkSelf` decimal(4,2),`jf2ReasonSelf` varchar(500),`jf2MarkSelf` decimal(4,2),`jf3ReasonSelf` varchar(500),
+        `jf3MarkSelf` decimal(4,2),`jf4ReasonSelf` varchar(500),`jf4MarkSelf` decimal(4,2),`jf5ReasonSelf` varchar(500),
+        `jf5MarkSelf` decimal(4,2),`jf6ReasonSelf` varchar(500),`jf6MarkSelf` decimal(4,2),`llxz1ReasonSelf` varchar(500),
+        `llxz1MarkSelf` decimal(4,2),`llxz2ReasonSelf` varchar(500),`llxz2MarkSelf` decimal(4,2),`llxz3ReasonSelf` varchar(500),
+        `llxz3MarkSelf` decimal(4,2),`llxz4ReasonSelf` varchar(500),`llxz4MarkSelf` decimal(4,2),`zygw1ReasonSelf` varchar(500),
+        `zygw1MarkSelf` decimal(4,2),`zygw2ReasonSelf` varchar(500),`zygw2MarkSelf` decimal(4,2),`zygw3ReasonSelf` varchar(500),
+        `zygw3MarkSelf` decimal(4,2),`jsyw1ReasonSelf` varchar(500),`jsyw1MarkSelf` decimal(4,2),`jsyw2ReasonSelf` varchar(500),
+        `jsyw2MarkSelf` decimal(4,2),`jsyw3ReasonSelf` varchar(500),`jsyw3MarkSelf` decimal(4,2),`jsyw4ReasonSelf` varchar(500),
+        `jsyw4MarkSelf` decimal(4,2),`zgsx1ReasonSelf` varchar(500),`zgsx1MarkSelf` decimal(4,2),`zgsx2ReasonSelf` varchar(500),
+        `zgsx2MarkSelf` decimal(4,2),`zgsx3ReasonSelf` varchar(500),`zgsx3MarkSelf` decimal(4,2),`zgsx4ReasonSelf` varchar(500),
+        `zgsx4MarkSelf` decimal(4,2),
+        `mark_time` timestamp NOT NULL,
+        `mark_id` varchar(100) NOT NULL,
+        `mark_mark` decimal(4,2) NOT NULL,
+        `mark_month` varchar(10) NOT NULL,
+        `mark_JiDu` varchar(10) NOT NULL,
+        `uid` int(11) NOT NULL,
+        `update_time` timestamp,
+         PRIMARY KEY (`mark_id`)
+        )  ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    -->
+
+
+    <select id="selectAllList" parameterType="Map" resultType="java.util.HashMap">
+        select de.dept_name,u.user_name,s.mark_id as smark_id,s.mark_month as smark_month,
+        s.mark_jiDu as smark_jiDu,s.mark_year as smark_year,
+        s.mark_time as smark_time,s.mark_mark as smark_mark,
+        l.mark_id as lmark_id,l.mark_month as lmark_month,
+        l.mark_jiDu as lmark_jiDu,l.mark_year as lmark_year,
+        l.mark_time as lmark_time,l.mark_mark as lmark_mark,
+        d.mark_id as dmark_id,d.mark_month as dmark_month,
+        d.mark_jiDu as dmark_jiDu,d.mark_year as dmark_year,
+        d.mark_time as dmark_time,d.mark_mark as dmark_mark
+        from sys_user u
+        left join sys_dept de on u.dept_id=de.dept_id
+        left join sys_user_role r on u.user_id=r.user_id
+        left join sys_role sr on r.role_id=sr.role_id
+        left join sys_mark_self s on u.user_id=s.uid
+        left join sys_mark_leader l on s.mark_id=l.mark_id
+        left join sys_mark_DZB d on s.mark_id=d.mark_id
+        where u.del_flag='0' and u.status='0' and sr.role_key='dyzrq'
+        <if test="deptId != null and deptId != ''">
+            and u.dept_id=#{deptId}
+        </if>
+        <if test="markMonth != null and markMonth != ''">
+            and s.mark_month=#{markMonth}
+        </if>
+        <if test="markYear != null and markYear != ''">
+            and s.mark_year=#{markYear}
+        </if>
+        <if test="startTime != null and startTime != ''">
+            and s.mark_time &gt;= #{startTime}
+        </if>
+        <if test="endTime != null and endTime != ''">
+            and s.mark_time &lt;= #{endTime}
+        </if>
+        <if test="markJiDu != null and markJiDu != ''">
+            and s.mark_JiDu=#{markJiDu}
+        </if>
+        order by smark_year,smark_month,de.dept_name desc
+    </select>
+
+    <select id="selectImpotList" parameterType="SysMark" resultMap="SysMarkImportResult">
+        select de.dept_name as deptName,u.user_name as userName,s.mark_id as markId,s.mark_month as markMonth,
+        s.mark_jiDu as markJiDu,s.mark_year as markYear,
+        s.mark_mark as markMarkSelf,
+        l.mark_mark as markMarkLeader,
+        d.mark_mark as markMarkDZB
+        from sys_user u
+        left join sys_dept de on u.dept_id=de.dept_id
+        left join sys_user_role r on u.user_id=r.user_id
+        left join sys_role sr on r.role_id=sr.role_id
+        left join sys_mark_self s on u.user_id=s.uid
+        left join sys_mark_leader l on s.mark_id=l.mark_id
+        left join sys_mark_DZB d on s.mark_id=d.mark_id
+        where u.del_flag='0' and u.status='0' and sr.role_key='dyzrq'
+        and (u.dept_id in (select dept_id from sys_dept where ancestors like concat('%', #{deptId}, '%'))
+        or u.dept_id = #{deptId} )
+        <if test="markMonth != null and markMonth != ''">
+            and s.mark_month=#{markMonth}
+        </if>
+        <if test="markYear != null and markYear != ''">
+            and s.mark_year=#{markYear}
+        </if>
+        <if test="startTime != null and startTime != ''">
+            and s.mark_time &gt;= #{startTime}
+        </if>
+        <if test="endTime != null and endTime != ''">
+            and s.mark_time &lt;= #{endTime}
+        </if>
+        <if test="markJiDu != null and markJiDu != ''">
+            and s.mark_JiDu=#{markJiDu}
+        </if>
+        order by deptName,userName,markYear,markMonth,markMarkDZB desc
+    </select>
+
+
+    <select id="selectObject" parameterType="SysMark" resultMap="SysMarkSelfResult">
+        select fj1ReasonSelf,fj1MarkSelf,fj2ReasonSelf,fj2MarkSelf,fj3ReasonSelf,fj3MarkSelf,
+        fj4ReasonSelf,fj4MarkSelf,fj5ReasonSelf,fj5MarkSelf,jf1ReasonSelf,jf1MarkSelf,jf2ReasonSelf,
+        jf2MarkSelf,jf3ReasonSelf,jf3MarkSelf,jf4ReasonSelf,jf4MarkSelf,jf5ReasonSelf,jf5MarkSelf,
+        jf6ReasonSelf,jf6MarkSelf,llxz1ReasonSelf,llxz1MarkSelf,llxz2ReasonSelf,llxz2MarkSelf,
+        llxz3ReasonSelf,llxz3MarkSelf,llxz4ReasonSelf,llxz4MarkSelf,zygw1ReasonSelf,zygw1MarkSelf,
+        zygw2ReasonSelf,zygw2MarkSelf,zygw3ReasonSelf,zygw3MarkSelf,jsyw1ReasonSelf,jsyw1MarkSelf,
+        jsyw2ReasonSelf,jsyw2MarkSelf,jsyw3ReasonSelf,jsyw3MarkSelf,jsyw4ReasonSelf,jsyw4MarkSelf,
+        zgsx1ReasonSelf,zgsx1MarkSelf,zgsx2ReasonSelf,zgsx2MarkSelf,zgsx3ReasonSelf,zgsx3MarkSelf,
+        zgsx4ReasonSelf,zgsx4MarkSelf,mark_id,mark_mark,mark_month,mark_JiDu,uid,mark_year,mark_time
+        from sys_mark_leader where mark_id=#{markId}
+    </select>
+
+    <update id="update" parameterType="SysMark">
+        update sys_mark_leader
+        <set>
+            fj1ReasonSelf=#{fj1ReasonSelf},
+            fj1MarkSelf=#{fj1MarkSelf},
+            fj2ReasonSelf=#{fj2ReasonSelf},
+            fj2MarkSelf=#{fj2MarkSelf},
+            fj3ReasonSelf=#{fj3ReasonSelf},
+            fj3MarkSelf=#{fj3MarkSelf},
+            fj4ReasonSelf=#{fj4ReasonSelf},
+            fj4MarkSelf=#{fj4MarkSelf},
+            fj5ReasonSelf=#{fj5ReasonSelf},
+            fj5MarkSelf=#{fj5MarkSelf},
+            jf1ReasonSelf=#{jf1ReasonSelf},
+            jf1MarkSelf=#{jf1MarkSelf},
+            jf2ReasonSelf=#{jf2ReasonSelf},
+            jf2MarkSelf=#{jf2MarkSelf},
+            jf3ReasonSelf=#{jf3ReasonSelf},
+            jf3MarkSelf=#{jf3MarkSelf},
+            jf4ReasonSelf=#{jf4ReasonSelf},
+            jf4MarkSelf=#{jf4MarkSelf},
+            jf5ReasonSelf=#{jf5ReasonSelf},
+            jf5MarkSelf=#{jf5MarkSelf},jf6ReasonSelf=#{jf6ReasonSelf},
+            jf6MarkSelf=#{jf6MarkSelf},llxz1ReasonSelf=#{llxz1ReasonSelf},
+            llxz1MarkSelf=#{llxz1MarkSelf},llxz2ReasonSelf=#{llxz2ReasonSelf},
+            llxz2MarkSelf=#{llxz2MarkSelf},llxz3ReasonSelf=#{llxz3ReasonSelf},
+            llxz3MarkSelf=#{llxz3MarkSelf},llxz4ReasonSelf=#{llxz4ReasonSelf},
+            llxz4MarkSelf=#{llxz4MarkSelf},zygw1ReasonSelf=#{zygw1ReasonSelf},
+            zygw1MarkSelf=#{zygw1MarkSelf},zygw2ReasonSelf=#{zygw2ReasonSelf},
+            zygw2MarkSelf=#{zygw2MarkSelf},zygw3ReasonSelf=#{zygw3ReasonSelf},
+            zygw3MarkSelf=#{zygw3MarkSelf},jsyw1ReasonSelf=#{jsyw1ReasonSelf},
+            jsyw1MarkSelf=#{jsyw1MarkSelf},jsyw2ReasonSelf=#{jsyw2ReasonSelf},
+            jsyw2MarkSelf=#{jsyw2MarkSelf},jsyw3ReasonSelf=#{jsyw3ReasonSelf},
+            jsyw3MarkSelf=#{jsyw3MarkSelf},jsyw4ReasonSelf=#{jsyw4ReasonSelf},
+            jsyw4MarkSelf=#{jsyw4MarkSelf},zgsx1ReasonSelf=#{zgsx1ReasonSelf},
+            zgsx1MarkSelf=#{zgsx1MarkSelf},zgsx2ReasonSelf=#{zgsx2ReasonSelf},
+            zgsx2MarkSelf=#{zgsx2MarkSelf},zgsx3ReasonSelf=#{zgsx3ReasonSelf},
+            zgsx3MarkSelf=#{zgsx3MarkSelf},zgsx4ReasonSelf=#{zgsx4ReasonSelf},
+            zgsx4MarkSelf=#{zgsx4MarkSelf},
+            mark_mark=#{markMark}
+        </set>
+        where mark_id = #{markId}
+    </update>
+
+    <select id="selectList" parameterType="SysMark" resultMap="SysMarkSelfResult">
+        select mark_id,mark_mark,mark_month,mark_JiDu,uid,update_time,mark_time,mark_year
+        from sys_mark_leader where 1=1
+        <if test="markId != null and markId != ''">
+            and mark_id=#{markId}
+        </if>
+        <if test="uid != null and uid != ''">
+            and uid=#{uid}
+        </if>
+        <if test="markMonth != null and markMonth != ''">
+            and mark_month=#{markMonth}
+        </if>
+        <if test="markYear != null and markYear != ''">
+            and mark_year=#{markYear}
+        </if>
+        <if test="startTime != null and startTime != ''">
+            and mark_time &gt;= #{startTime}
+        </if>
+        <if test="endTime != null and endTime != ''">
+            and mark_time &lt;= #{endTime}
+        </if>
+        <if test="markJiDu != null and markJiDu != ''">
+            and mark_JiDu=#{markJiDu}
+        </if>
+    </select>
+
+    <delete id="delete" parameterType="String">
+ 		delete from sys_mark_leader where mark_id = #{markId}
+ 	</delete>
+    <!--like concat('%', #{markYear}, '%')-->
+
+    <insert id="insert" parameterType="SysMark">
+        insert into sys_mark_leader(
+        <if test="fj1ReasonSelf!=null and fj1ReasonSelf!=''">fj1ReasonSelf,</if>
+        <if test="fj1MarkSelf!=null and fj1MarkSelf!=''">fj1MarkSelf,</if>
+        <if test="fj2ReasonSelf!=null and fj2ReasonSelf!=''">fj2ReasonSelf,</if>
+        <if test="fj2MarkSelf!=null and fj2MarkSelf!=''">fj2MarkSelf,</if>
+        <if test="fj3ReasonSelf!=null and fj3ReasonSelf!=''">fj3ReasonSelf,</if>
+        <if test="fj3MarkSelf!=null and fj3MarkSelf!=''">fj3MarkSelf,</if>
+        <if test="fj4ReasonSelf!=null and fj4ReasonSelf!=''">fj4ReasonSelf,</if>
+        <if test="fj4MarkSelf!=null and fj4MarkSelf!=''">fj4MarkSelf,</if>
+        <if test="fj5ReasonSelf!=null and fj5ReasonSelf!=''">fj5ReasonSelf,</if>
+        <if test="fj5MarkSelf!=null and fj5MarkSelf!=''">fj5MarkSelf,</if>
+        <if test="jf1ReasonSelf!=null and jf1ReasonSelf!=''">jf1ReasonSelf,</if>
+        <if test="jf1MarkSelf!=null and jf1MarkSelf!=''">jf1MarkSelf,</if>
+        <if test="jf2ReasonSelf!=null and jf2ReasonSelf!=''">jf2ReasonSelf,</if>
+        <if test="jf2MarkSelf!=null and jf2MarkSelf!=''">jf2MarkSelf,</if>
+        <if test="jf3ReasonSelf!=null and jf3ReasonSelf!=''">jf3ReasonSelf,</if>
+        <if test="jf3MarkSelf!=null and jf3MarkSelf!=''">jf3MarkSelf,</if>
+        <if test="jf4ReasonSelf!=null and jf4ReasonSelf!=''">jf4ReasonSelf,</if>
+        <if test="jf4MarkSelf!=null and jf4MarkSelf!=''">jf4MarkSelf,</if>
+        <if test="jf5ReasonSelf!=null and jf5ReasonSelf!=''">jf5ReasonSelf,</if>
+        <if test="jf5MarkSelf!=null and jf5MarkSelf!=''">jf5MarkSelf,</if>
+        <if test="jf6ReasonSelf!=null and jf6ReasonSelf!=''">jf6ReasonSelf,</if>
+        <if test="jf6MarkSelf!=null and jf6MarkSelf!=''">jf6MarkSelf,</if>
+        <if test="llxz1ReasonSelf!=null and llxz1ReasonSelf!=''">llxz1ReasonSelf,</if>
+        <if test="llxz1MarkSelf!=null and llxz1MarkSelf!=''">llxz1MarkSelf,</if>
+        <if test="llxz2ReasonSelf!=null and llxz2ReasonSelf!=''">llxz2ReasonSelf,</if>
+        <if test="llxz2MarkSelf!=null and llxz2MarkSelf!=''">llxz2MarkSelf,</if>
+        <if test="llxz3ReasonSelf!=null and llxz3ReasonSelf!=''">llxz3ReasonSelf,</if>
+        <if test="llxz3MarkSelf!=null and llxz3MarkSelf!=''">llxz3MarkSelf,</if>
+        <if test="llxz4ReasonSelf!=null and llxz4ReasonSelf!=''">llxz4ReasonSelf,</if>
+        <if test="llxz4MarkSelf!=null and llxz4MarkSelf!=''">llxz4MarkSelf,</if>
+        <if test="zygw1ReasonSelf!=null and zygw1ReasonSelf!=''">zygw1ReasonSelf,</if>
+        <if test="zygw1MarkSelf!=null and zygw1MarkSelf!=''">zygw1MarkSelf,</if>
+        <if test="zygw2ReasonSelf!=null and zygw2ReasonSelf!=''">zygw2ReasonSelf,</if>
+        <if test="zygw2MarkSelf!=null and zygw2MarkSelf!=''">zygw2MarkSelf,</if>
+        <if test="zygw3ReasonSelf!=null and zygw3ReasonSelf!=''">zygw3ReasonSelf,</if>
+        <if test="zygw3MarkSelf!=null and zygw3MarkSelf!=''">zygw3MarkSelf,</if>
+        <if test="jsyw1ReasonSelf!=null and jsyw1ReasonSelf!=''">jsyw1ReasonSelf,</if>
+        <if test="jsyw1MarkSelf!=null and jsyw1MarkSelf!=''">jsyw1MarkSelf,</if>
+        <if test="jsyw2ReasonSelf!=null and jsyw2ReasonSelf!=''">jsyw2ReasonSelf,</if>
+        <if test="jsyw2MarkSelf!=null and jsyw2MarkSelf!=''">jsyw2MarkSelf,</if>
+        <if test="jsyw3ReasonSelf!=null and jsyw3ReasonSelf!=''">jsyw3ReasonSelf,</if>
+        <if test="jsyw3MarkSelf!=null and jsyw3MarkSelf!=''">jsyw3MarkSelf,</if>
+        <if test="jsyw4ReasonSelf!=null and jsyw4ReasonSelf!=''">jsyw4ReasonSelf,</if>
+        <if test="jsyw4MarkSelf!=null and jsyw4MarkSelf!=''">jsyw4MarkSelf,</if>
+        <if test="zgsx1ReasonSelf!=null and zgsx1ReasonSelf!=''">zgsx1ReasonSelf,</if>
+        <if test="zgsx1MarkSelf!=null and zgsx1MarkSelf!=''">zgsx1MarkSelf,</if>
+        <if test="zgsx2ReasonSelf!=null and zgsx2ReasonSelf!=''">zgsx2ReasonSelf,</if>
+        <if test="zgsx2MarkSelf!=null and zgsx2MarkSelf!=''">zgsx2MarkSelf,</if>
+        <if test="zgsx3ReasonSelf!=null and zgsx3ReasonSelf!=''">zgsx3ReasonSelf,</if>
+        <if test="zgsx3MarkSelf!=null and zgsx3MarkSelf!=''">zgsx3MarkSelf,</if>
+        <if test="zgsx4ReasonSelf!=null and zgsx4ReasonSelf!=''">zgsx4ReasonSelf,</if>
+        <if test="zgsx4MarkSelf!=null and zgsx4MarkSelf!=''">zgsx4MarkSelf,</if>
+        uid,
+        mark_id,
+        mark_mark,
+        mark_month,
+        mark_time,
+        mark_JiDu,
+        mark_year
+        )values(
+        <if test="fj1ReasonSelf!=null and fj1ReasonSelf!=''">#{fj1ReasonSelf},</if>
+        <if test="fj1MarkSelf!=null and fj1MarkSelf!=''">#{fj1MarkSelf},</if>
+        <if test="fj2ReasonSelf!=null and fj2ReasonSelf!=''">#{fj2ReasonSelf},</if>
+        <if test="fj2MarkSelf!=null and fj2MarkSelf!=''">#{fj2MarkSelf},</if>
+        <if test="fj3ReasonSelf!=null and fj3ReasonSelf!=''">#{fj3ReasonSelf},</if>
+        <if test="fj3MarkSelf!=null and fj3MarkSelf!=''">#{fj3MarkSelf},</if>
+        <if test="fj4ReasonSelf!=null and fj4ReasonSelf!=''">#{fj4ReasonSelf},</if>
+        <if test="fj4MarkSelf!=null and fj4MarkSelf!=''">#{fj4MarkSelf},</if>
+        <if test="fj5ReasonSelf!=null and fj5ReasonSelf!=''">#{fj5ReasonSelf},</if>
+        <if test="fj5MarkSelf!=null and fj5MarkSelf!=''">#{fj5MarkSelf},</if>
+        <if test="jf1ReasonSelf!=null and jf1ReasonSelf!=''">#{jf1ReasonSelf},</if>
+        <if test="jf1MarkSelf!=null and jf1MarkSelf!=''">#{jf1MarkSelf},</if>
+        <if test="jf2ReasonSelf!=null and jf2ReasonSelf!=''">#{jf2ReasonSelf},</if>
+        <if test="jf2MarkSelf!=null and jf2MarkSelf!=''">#{jf2MarkSelf},</if>
+        <if test="jf3ReasonSelf!=null and jf3ReasonSelf!=''">#{jf3ReasonSelf},</if>
+        <if test="jf3MarkSelf!=null and jf3MarkSelf!=''">#{jf3MarkSelf},</if>
+        <if test="jf4ReasonSelf!=null and jf4ReasonSelf!=''">#{jf4ReasonSelf},</if>
+        <if test="jf4MarkSelf!=null and jf4MarkSelf!=''">#{jf4MarkSelf},</if>
+        <if test="jf5ReasonSelf!=null and jf5ReasonSelf!=''">#{jf5ReasonSelf},</if>
+        <if test="jf5MarkSelf!=null and jf5MarkSelf!=''">#{jf5MarkSelf},</if>
+        <if test="jf6ReasonSelf!=null and jf6ReasonSelf!=''">#{jf6ReasonSelf},</if>
+        <if test="jf6MarkSelf!=null and jf6MarkSelf!=''">#{jf6MarkSelf},</if>
+        <if test="llxz1ReasonSelf!=null and llxz1ReasonSelf!=''">#{llxz1ReasonSelf},</if>
+        <if test="llxz1MarkSelf!=null and llxz1MarkSelf!=''">#{llxz1MarkSelf},</if>
+        <if test="llxz2ReasonSelf!=null and llxz2ReasonSelf!=''">#{llxz2ReasonSelf},</if>
+        <if test="llxz2MarkSelf!=null and llxz2MarkSelf!=''">#{llxz2MarkSelf},</if>
+        <if test="llxz3ReasonSelf!=null and llxz3ReasonSelf!=''">#{llxz3ReasonSelf},</if>
+        <if test="llxz3MarkSelf!=null and llxz3MarkSelf!=''">#{llxz3MarkSelf},</if>
+        <if test="llxz4ReasonSelf!=null and llxz4ReasonSelf!=''">#{llxz4ReasonSelf},</if>
+        <if test="llxz4MarkSelf!=null and llxz4MarkSelf!=''">#{llxz4MarkSelf},</if>
+        <if test="zygw1ReasonSelf!=null and zygw1ReasonSelf!=''">#{zygw1ReasonSelf},</if>
+        <if test="zygw1MarkSelf!=null and zygw1MarkSelf!=''">#{zygw1MarkSelf},</if>
+        <if test="zygw2ReasonSelf!=null and zygw2ReasonSelf!=''">#{zygw2ReasonSelf},</if>
+        <if test="zygw2MarkSelf!=null and zygw2MarkSelf!=''">#{zygw2MarkSelf},</if>
+        <if test="zygw3ReasonSelf!=null and zygw3ReasonSelf!=''">#{zygw3ReasonSelf},</if>
+        <if test="zygw3MarkSelf!=null and zygw3MarkSelf!=''">#{zygw3MarkSelf},</if>
+        <if test="jsyw1ReasonSelf!=null and jsyw1ReasonSelf!=''">#{jsyw1ReasonSelf},</if>
+        <if test="jsyw1MarkSelf!=null and jsyw1MarkSelf!=''">#{jsyw1MarkSelf},</if>
+        <if test="jsyw2ReasonSelf!=null and jsyw2ReasonSelf!=''">#{jsyw2ReasonSelf},</if>
+        <if test="jsyw2MarkSelf!=null and jsyw2MarkSelf!=''">#{jsyw2MarkSelf},</if>
+        <if test="jsyw3ReasonSelf!=null and jsyw3ReasonSelf!=''">#{jsyw3ReasonSelf},</if>
+        <if test="jsyw3MarkSelf!=null and jsyw3MarkSelf!=''">#{jsyw3MarkSelf},</if>
+        <if test="jsyw4ReasonSelf!=null and jsyw4ReasonSelf!=''">#{jsyw4ReasonSelf},</if>
+        <if test="jsyw4MarkSelf!=null and jsyw4MarkSelf!=''">#{jsyw4MarkSelf},</if>
+        <if test="zgsx1ReasonSelf!=null and zgsx1ReasonSelf!=''">#{zgsx1ReasonSelf},</if>
+        <if test="zgsx1MarkSelf!=null and zgsx1MarkSelf!=''">#{zgsx1MarkSelf},</if>
+        <if test="zgsx2ReasonSelf!=null and zgsx2ReasonSelf!=''">#{zgsx2ReasonSelf},</if>
+        <if test="zgsx2MarkSelf!=null and zgsx2MarkSelf!=''">#{zgsx2MarkSelf},</if>
+        <if test="zgsx3ReasonSelf!=null and zgsx3ReasonSelf!=''">#{zgsx3ReasonSelf},</if>
+        <if test="zgsx3MarkSelf!=null and zgsx3MarkSelf!=''">#{zgsx3MarkSelf},</if>
+        <if test="zgsx4ReasonSelf!=null and zgsx4ReasonSelf!=''">#{zgsx4ReasonSelf},</if>
+        <if test="zgsx4MarkSelf!=null and zgsx4MarkSelf!=''">#{zgsx4MarkSelf},</if>
+        #{uid},
+        #{markId},
+        #{markMark},
+        #{markMonth},
+        #{markTime},
+        #{markJiDu},
+        #{markYear})
+    </insert>
+
+</mapper>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<meta charset="utf-8">
+<head th:include="include :: header">
+	<title>新增自评</title>
+</head>
+<body class="white-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+		<form class="form-horizontal m" id="form-role-add">
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">自评得分</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="markSelf" id="markSelf"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">自评描述：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="markReason" id="markReason">
+				</div>
+			</div>
+
+
+		</form>
+	</div>
+	<div th:include="include::footer"></div>
+
+	<script type="text/javascript">
+		
+		function submitHandler() {
+	        if ($.validate.form()) {
+	        	add();
+	        }
+	    }
+	
+		function add() {
+			var markSelf = $("input[name='markSelf']").val();
+			var markReason = $("input[name='markReason']").val();
+
+			$.ajax({
+				cache : true,
+				type : "POST",
+				url : ctx + "system/user/mark/add",
+				data : {
+					"markSelf": markSelf,
+					"markReason": markReason,
+				},
+				async : false,
+				error : function(request) {
+					$.modal.alertError("系统错误");
+				},
+				success : function(data) {
+					$.operate.successCallback(data);
+				}
+			});
+		}
+	</script>
+</body>
+</html>

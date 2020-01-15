@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"/>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-role-add">
+        <div class="form-group">
+
+            <table class="table table-bordered">
+                <thead>
+                <tr bgcolor="#f5f5f5">
+                    <th style="width: 15%">内容</th>
+                    <th style="width: 45%">考核标准</th>
+                    <th style="width: 30%">加减分原因</th>
+                    <th style="width: 10%">得分</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--否决开始-->
+                <tr bgcolor="#f2dede">
+                    <td rowspan="7">否决条件</td>
+                    <td>1.发生撞“红线”及以上问题的</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="fj1ReasonSelf" name="fj1ReasonSelf"  th:value="${fj1ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="fj1MarkSelf" name="fj1MarkSelf"  th:value="${fj1MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#f2dede">
+                    <!--<td>否决条件</td>-->
+                    <td>2.发生旷工行为的</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="fj2ReasonSelf" name="fj2ReasonSelf"  th:value="${fj2ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="fj2MarkSelf" name="fj2MarkSelf"  th:value="${fj2MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#f2dede">
+                    <!--<td>否决条件</td>-->
+                    <td>3.发生打架斗殴等不良行为的</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="fj3ReasonSelf" name="fj3ReasonSelf" th:value="${fj3ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="fj3MarkSelf" name="fj3MarkSelf" th:value="${fj3MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#f2dede">
+                    <!--<td>否决条件</td>-->
+                    <td>4.发生廉洁自律不良反映的</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="fj4ReasonSelf" name="fj4ReasonSelf" th:value="${fj4ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="fj4MarkSelf" name="fj4MarkSelf" th:value="${fj4MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#f2dede">
+                    <!--<td>否决条件</td>-->
+                    <td>5.越级上访或参与迷信活动等造成不良影响的</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="fj5ReasonSelf" name="fj5ReasonSelf" th:value="${fj5ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="fj5MarkSelf" name="fj5MarkSelf" th:value="${fj5MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#f2dede">
+                    <!--<td>否决条件</td>-->
+                    <td>6.参与赌博、出入不健康娱乐场所的</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="fj6ReasonSelf" name="fj6ReasonSelf" th:value="${fj6ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="fj6MarkSelf" name="fj6MarkSelf" th:value="${fj6MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#f2dede">
+                    <!--<td>否决条件</td>-->
+                    <td>7. 违法违纪行为的，及经研究其他否决项目的问题</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="fj7ReasonSelf" name="fj7ReasonSelf"  th:value="${fj7ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="fj7MarkSelf" name="fj7MarkSelf"  th:value="${fj7MarkSelf}"/></td>
+                </tr>
+                <!--否决结束-->
+
+                <!--加分开始-->
+                <tr bgcolor="#dff0d8">
+                    <td rowspan="6">加分</td>
+                    <td>1.参加技术比武获得总公司名次加15分，获得集团公司名次加10分，在段及以上组织的技能竞赛中，取得总公司，
+                        集团公司，获得车务段前3名的，加3-5分
+                    </td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="jf1ReasonSelf" name="jf1ReasonSelf" th:value="${jf1ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="jf1MarkSelf" name="jf1MarkSelf" th:value="${jf1MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#dff0d8">
+                    <td>2. 提出“金点子”、合理化建议被车务段及以上采纳的，加3-5分
+                    </td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="jf2ReasonSelf" name="jf2ReasonSelf" th:value="${jf2ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="jf2MarkSelf" name="jf2MarkSelf" th:value="${jf2MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#dff0d8">
+                    <td>3. 发现安全重大隐患、防止安全事故、，受到段级及以上表扬表彰或通报嘉奖的（以文件公布为准），
+                        集团公司及以上通报表彰的每件加5-10分，段级每件加2-5分
+                    </td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="jf3ReasonSelf" name="jf3ReasonSelf" th:value="${jf3ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="jf3MarkSelf" name="jf3MarkSelf" th:value="${jf3MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#dff0d8">
+                    <td>4. 围绕安全、运输和技术难题立项攻关取得实效，受到总公司、集团公司、段表彰的分别加10分、5分、3分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="jf4ReasonSelf" name="jf4ReasonSelf"  th:value="${jf4ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="jf4MarkSelf" name="jf4MarkSelf"  th:value="${jf4MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#dff0d8">
+                    <td>5. 做好人好事、见义勇为事迹受到表彰奖励或媒体表扬加3-10分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="jf5ReasonSelf" name="jf5ReasonSelf"  th:value="${jf5ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="jf5MarkSelf" name="jf5MarkSelf"  th:value="${jf5MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#dff0d8">
+                    <td>6.其他受到集团公司及以上表彰奖励的，加3-10分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="jf6ReasonSelf" name="jf6ReasonSelf" th:value="${jf6ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="jf6MarkSelf" name="jf6MarkSelf" th:value="${jf6MarkSelf}"/></td>
+                </tr>
+                <!--加分结束-->
+                <!--政治素质开始-->
+                <tr bgcolor="#fcf8e3">
+                    <td rowspan="7">政治素质 （基础分25分）
+                        ：讲政治有信念，讲规矩有纪律，认真学习政治理论，用习近平新时代中国特色社会主义思想武装头脑，
+                        自觉参加组织生活，认真行使党员权利、履行党员义务。
+                    </td>
+                    <td>1.迟交交纳党费减1分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="zzsz1ReasonSelf" name="zzsz1ReasonSelf"  th:value="${zzsz1ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="zzsz1MarkSelf" name="zzsz1MarkSelf"  th:value="${zzsz1MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>2.未按要求佩戴党员徽章，每次减0.5分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="zzsz2ReasonSelf" name="zzsz2ReasonSelf" th:value="${zzsz2ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="zzsz2MarkSelf" name="zzsz2MarkSelf" th:value="${zzsz2MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>3.政治理论学习无学习记录、学习体会减1分，政治理论考试成绩不达标减2分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="zzsz3ReasonSelf" name="zzsz3ReasonSelf" th:value="${zzsz3ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="zzsz3MarkSelf" name="zzsz3MarkSelf" th:value="${zzsz3MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>4.参加党内组织生活、实践活动不积极，迟到一次减1分，无故不参加减3分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="zzsz4ReasonSelf" name="zzsz4ReasonSelf" th:value="${zzsz4ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="zzsz4MarkSelf" name="zzsz4MarkSelf" th:value="${zzsz4MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>5.对身边的一些错误言论观点没有批评教育和正面引导，每次减2分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="zzsz5ReasonSelf" name="zzsz5ReasonSelf" th:value="${zzsz5ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="zzsz5MarkSelf" name="zzsz5MarkSelf" th:value="${zzsz5MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>6.传播小道消息、散布不实言论，或网络上转发不良不实信息，尚未造成影响的，每次减3分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="zzsz6ReasonSelf" name="zzsz6ReasonSelf" th:value="${zzsz6ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="zzsz6MarkSelf" name="zzsz6MarkSelf" th:value="${zzsz6MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>7.未按时开展党员责任岗自评、互评减1分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="zzsz7ReasonSelf" name="zzsz7ReasonSelf" th:value="${zzsz7ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="zzsz47ArkSelf" name="zzsz47ArkSelf" th:value="${zzsz47ArkSelf}"/></td>
+                </tr>
+                <!--政治素质结束-->
+                <!--岗位技能开始-->
+                <tr bgcolor="#fcf8e3">
+                    <td rowspan="4">岗位技能（基础分25分）
+                        ：深入学习专业知识，钻研本职业务，熟练掌握岗位技能，率先达到岗位标准，做本岗位的行家里手。
+                    </td>
+                    <td>1.不按时参加业务知识学习，迟到一次减1分，无故不参加减3分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="gwjn1ReasonSelf" name="gwjn1ReasonSelf" th:value="${gwjn1ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="gwjn1MarkSelf" name="gwjn1MarkSelf" th:value="${gwjn1MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>2.车站业务考试成绩不达标减2分
+                    </td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="gwjn2ReasonSelf" name="gwjn2ReasonSelf" th:value="${gwjn2ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="gwjn2MarkSelf" name="gwjn2MarkSelf" th:value="${gwjn2MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>3.上级抽考成绩不合格或受到通报批评的减3-5分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="gwjn3ReasonSelf" name="gwjn3ReasonSelf" th:value="${gwjn3ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="gwjn3MarkSelf" name="gwjn3MarkSelf" th:value="${gwjn3MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>4.标准化作业落实不到位、应急处理能力差，造成不良影响减2-5分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="gwjn4ReasonSelf" name="gwjn4ReasonSelf" th:value="${gwjn4ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="gwjn4MarkSelf" name="gwjn4MarkSelf" th:value="${gwjn4MarkSelf}"/></td>
+                </tr>
+                <!--岗位技能结束-->
+                <!--工作业绩开始-->
+                <tr bgcolor="#fcf8e3">
+                    <td rowspan="6">工作业绩（基础分25分）
+                        ：讲奉献有作为，爱岗敬业，履职尽责，自身无违章、无违纪、无事故，优质高效地完成各项工作任务。
+                    </td>
+                    <td>1.发生迟到、早退等违反工作纪律的每次减1分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="gzyj1ReasonSelf" name="gzyj1ReasonSelf" th:value="${gzyj1ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="gzyj1MarkSelf" name="gzyj1MarkSelf" th:value="${gzyj1MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>2.党员个人发生严重“两违”问题每件减10分，发生A类“两违”问题每件减5分，B类“两违”问题每件减4分，
+                        C类“两违”问题每件减3分，D类“两违”问题每件减2分
+                    </td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="gzyj2ReasonSelf" name="gzyj2ReasonSelf" th:value="${gzyj2ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="gzyj2MarkSelf" name="gzyj2MarkSelf" th:value="${gzyj2MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>3.不积极参加建言献策、开展立项攻关的减1分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="gzyj3ReasonSelf" name="gzyj3ReasonSelf" th:value="${gzyj3ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="gzyj3MarkSelf" name="gzyj3MarkSelf" th:value="${gzyj3MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>4.公开承诺未兑现，每项减2分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="gzyj4ReasonSelf" name="gzyj4ReasonSelf" th:value="${gzyj4ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="gzyj4MarkSelf" name="gzyj4MarkSelf" th:value="${gzyj4MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>5.无故不参加生产突击任务、义务奉献等党内活动，每次减3分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="gzyj5ReasonSelf" name="gzyj5ReasonSelf" th:value="${gzyj5ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="gzyj5MarkSelf" name="gzyj5MarkSelf" th:value="${gzyj5MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>6.未完成组织交办的任务，每项减3-5分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="gzyj6ReasonSelf" name="gzyj6ReasonSelf" th:value="${gzyj6ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="gzyj6MarkSelf" name="gzyj6MarkSelf" th:value="${gzyj6MarkSelf}"/></td>
+                </tr>
+                <!--工作业绩结束-->
+                <!--群众评价开始-->
+                <tr bgcolor="#fcf8e3">
+                    <td rowspan="7">群众评价（基础分25分）
+                        :讲道德有品行，牢记党的宗旨，服务意识强，任劳任怨，勇挑重担，积极传播正能量，职工群众信任，
+                        满意度较高。
+                    </td>
+                    <td>1.言行举止不文明每次减1-3分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="qzpj1ReasonSelf" name="qzpj1ReasonSelf" th:value="${qzpj1ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="qzpj1MarkSelf" name="qzpj1MarkSelf" th:value="${qzpj1MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>2.发生责任旅客、货主批评投诉的一次减3-5分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="qzpj2ReasonSelf" name="qzpj2ReasonSelf"  th:value="${qzpj2ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="qzpj2MarkSelf" name="qzpj2MarkSelf"  th:value="${qzpj2MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>3.岗位卫生不达标减1-2分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="qzpj3ReasonSelf" name="qzpj3ReasonSelf" th:value="${qzpj3ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="qzpj3MarkSelf" name="qzpj3MarkSelf" th:value="${qzpj3MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>4.节支降耗意识不强，造成水电、办公用材浪费的每次减1-3分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="qzpj4ReasonSelf" name="qzpj4ReasonSelf"  th:value="${qzpj4ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="qzpj4MarkSelf" name="qzpj4MarkSelf" th:value="${qzpj4MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>5.损坏公物的每次减3-5分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="qzpj5ReasonSelf" name="qzpj5ReasonSelf"  th:value="${qzpj5ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="qzpj5MarkSelf" name="qzpj5MarkSelf"  th:value="${qzpj5MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>6. 对群众反映的困难和问题，不能够及时帮助解决或者按照程序汇报每次减1-3分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="qzpj6ReasonSelf" name="qzpj6ReasonSelf" th:value="${qzpj6ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="qzpj6MarkSelf" name="qzpj6MarkSelf" th:value="${qzpj6MarkSelf}"/></td>
+                </tr>
+                <tr bgcolor="#fcf8e3">
+                    <td>7. 其他违背职业道德、社会公德、家庭美德等不良问题的减5-10分</td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="qzpj7ReasonSelf" name="qzpj7ReasonSelf" th:value="${qzpj7ReasonSelf}"/></td>
+                    <td><input readonly="readonly" class="form-control" type="text" id="qzpj7MarkSelf" name="qzpj7MarkSelf" th:value="${qzpj7MarkSelf}"/></td>
+                </tr>
+                <!--群众评价结束-->
+                </tbody>
+            </table>
+
+
+        </div>
+    </form>
+</div>
+<div th:include="include::footer"></div>
+
+</body>
+</html>

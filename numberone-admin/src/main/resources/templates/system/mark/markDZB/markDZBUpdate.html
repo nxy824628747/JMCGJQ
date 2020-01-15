@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<link th:href="@{/ajax/libs/jquery-ztree/3.5/css/metro/zTreeStyle.css}" rel="stylesheet"/>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+
+    <div class="form-group" style="display: none;">
+        <label class="col-sm-3 control-label ">自评ID：</label>
+        <div class="col-sm-8">
+            <input class="form-control" type="text" name="markId" id="markId" th:value="${markId}"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <table class="table table-bordered">
+            <thead>
+            <tr bgcolor="#f5f5f5">
+                <th style="width: 15%">内容</th>
+                <th style="width: 45%">考核标准</th>
+                <th style="width: 30%">加减分原因</th>
+                <th style="width: 10%">得分</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--否决开始-->
+            <tr bgcolor="#f2dede">
+                <td rowspan="5">否决条件</td>
+                <td>1.责任区党员群众发生违法行为的</td>
+                <td><input class="form-control" type="text" name="fj1ReasonSelf" th:if="#{fj1ReasonSelf!=null}"
+                           th:value="${fj1ReasonSelf}"/></td>
+                <td><input class="form-control" type="text" name="fj1MarkSelf" id="fj1MarkSelf"
+                           th:value="${fj1MarkSelf}"/></td>
+            </tr>
+            <tr bgcolor="#f2dede">
+                <!--<td>否决条件</td>-->
+                <td>2.责任区党员群众发生撞“红线”及以上问题的</td>
+                <td><input class="form-control" type="text" th:value="${fj2ReasonSelf}" name="fj2ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${fj2MarkSelf}" name="fj2MarkSelf"/></td>
+            </tr>
+            <tr bgcolor="#f2dede">
+                <!--<td>否决条件</td>-->
+                <td>3.责任区党员群众参与群体上访、越级上访的</td>
+                <td><input class="form-control" type="text" th:value="${fj3ReasonSelf}" name="fj3ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${fj3MarkSelf}" name="fj3MarkSelf"/></td>
+            </tr>
+            <tr bgcolor="#f2dede">
+                <!--<td>否决条件</td>-->
+                <td>4.责任区发生打架斗殴等不良行为的</td>
+                <td><input class="form-control" type="text" th:value="${fj4ReasonSelf}" name="fj4ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${fj4MarkSelf}" name="fj4MarkSelf"/></td>
+            </tr>
+            <tr bgcolor="#f2dede">
+                <!--<td>否决条件</td>-->
+                <td>5.经研究其他否决项目的问题</td>
+                <td><input class="form-control" type="text" th:value="${fj5ReasonSelf}" name="fj5ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${fj5MarkSelf}" name="fj5MarkSelf"/></td>
+            </tr>
+            <!--否决结束-->
+
+            <!--加分开始-->
+            <tr bgcolor="#dff0d8">
+                <td rowspan="6">加分</td>
+                <td>1.责任区党员群众发现安全重大隐患、防止安全事故、受到段级及以上表扬表彰或通报嘉奖的（以文件公布为准）
+                    ，集团公司及以上通报表彰的每件加5-10分，段级每件加2-5分
+                </td>
+                <td><input class="form-control" type="text" th:value="${jf1ReasonSelf}" name="jf1ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${jf1MarkSelf}" name="jf1MarkSelf"/></td>
+            </tr>
+            <tr bgcolor="#dff0d8">
+                <td>2. 责任区党员群众参加技术比武获得总公司名次加15分，获得集团公司名次加10分，
+                    参加车务段技能竞赛获得前10名的加2-5分
+                </td>
+                <td><input class="form-control" type="text" th:value="${jf2ReasonSelf}" name="jf2ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${jf2MarkSelf}" name="jf2MarkSelf"/></td>
+            </tr>
+            <tr bgcolor="#dff0d8">
+                <td>3. 积极组织责任区党员群众 围绕安全、运输和技术难题立项攻关取得实效，受到总公司、
+                    集团公司、段表彰的分别加10分、5分、3分
+                </td>
+                <td><input class="form-control" type="text" th:value="${jf3ReasonSelf}" name="jf3ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${jf3MarkSelf}" name="jf3MarkSelf"/></td>
+            </tr>
+            <tr bgcolor="#dff0d8">
+                <td>4. 责任区党员群众完成急难险重任务成绩突出加5分</td>
+                <td><input class="form-control" type="text" th:value="${jf4ReasonSelf}" name="jf4ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${jf4MarkSelf}" name="jf4MarkSelf"/></td>
+            </tr>
+            <tr bgcolor="#dff0d8">
+                <td>5. 责任区党员群众做好人好事、见义勇为事迹受到表彰奖励或媒体表扬加3-10分</td>
+                <td><input class="form-control" type="text" th:value="${jf5ReasonSelf}" name="jf5ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${jf5MarkSelf}" name="jf5MarkSelf"/></td>
+            </tr>
+            <tr bgcolor="#dff0d8">
+                <td>6.其他受到集团公司及以上表彰奖励的，加5-10分，受到车务段表彰奖励的加3-5分</td>
+                <td><input class="form-control" type="text" th:value="${jf6ReasonSelf}" name="jf6ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${jf6MarkSelf}" name="jf6MarkSelf"/></td>
+            </tr>
+            <!--加分结束-->
+            <!--联劳协作配合开始-->
+            <tr bgcolor="#fcf8e3">
+                <td rowspan="4">联劳协作配合（基础分25分）：引导责任区内职工群众落实职责、联劳协作、
+                    攻坚克难，保质保量完成各项工作任务。
+                </td>
+                <td>1.责任区党员群众无故不参加上级组织的集体活动每人次减2分</td>
+                <td><input class="form-control" type="text" th:value="${llxz1ReasonSelf}" name="llxz1ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${llxz1MarkSelf}" name="llxz1MarkSelf"/></td>
+            </tr>
+            <tr bgcolor="#fcf8e3">
+                <td>2.责任区内环境卫生差、备品摆放不整齐的减1-3分</td>
+                <td><input class="form-control" type="text" th:value="${llxz2ReasonSelf}" name="llxz2ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${llxz2MarkSelf}" name="llxz2MarkSelf"/></td>
+            </tr>
+            <tr bgcolor="#fcf8e3">
+                <td>3.班组标准化验收不达标的减3分</td>
+                <td><input class="form-control" type="text" th:value="${llxz3ReasonSelf}" name="llxz3ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${llxz3MarkSelf}" name="llxz3MarkSelf"/></td>
+            </tr>
+            <tr bgcolor="#fcf8e3">
+                <td>4.班组未完成生产任务，运输组织工作，旅客、货主等服务工作受到上级批评的减3-5分</td>
+                <td><input class="form-control" type="text" th:value="${llxz4ReasonSelf}" name="llxz4ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${llxz4MarkSelf}" name="llxz4MarkSelf"/></td>
+            </tr>
+            <!--联劳协作配合结束-->
+            <!--作业岗位互控开始-->
+            <tr bgcolor="#fcf8e3">
+                <td rowspan="3">作业岗位互控（基础分25分）：在落实作业标准、遵章守纪上互控，对违反劳动纪律、
+                    违反操作规程、简化作业流程等违章违纪现象敢于批评制止，责任区内无严重违章违纪、
+                    无责任设备故障、无事故。
+                </td>
+                <td>1.责任区党员群众发生迟到、早退减1分</td>
+                <td><input class="form-control" type="text" th:value="${zygw1ReasonSelf}" name="zygw1ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${zygw1MarkSelf}" name="zygw1MarkSelf"/></td>
+            </tr>
+            <tr bgcolor="#fcf8e3">
+                <td>2.责任区党员群众发生严重“两违”问题每件减10分，发生A类“两违”问题每件减5分，B类“两违”
+                    问题每件减4分，C类“两违”问题每件减3分，D类“两违”问题每件减2分
+                </td>
+                <td><input class="form-control" type="text" th:value="${zygw2ReasonSelf}" name="zygw2ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${zygw2MarkSelf}" name="zygw2MarkSelf"/></td>
+            </tr>
+            <tr bgcolor="#fcf8e3">
+                <td>3.作业提醒不到位的减1-3分</td>
+                <td><input class="form-control" type="text" th:value="${zygw3ReasonSelf}" name="zygw3ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${zygw3MarkSelf}" name="zygw3MarkSelf"/></td>
+            </tr>
+            <!--作业岗位互控结束-->
+            <!--技术业务帮带开始-->
+            <tr bgcolor="#fcf8e3">
+                <td rowspan="4">技术业务帮带（基础分25分）：充分发挥示范带动作用，通过技能演示、
+                    技术交流等形式，向责任区内职工传授经验和技能，使之岗位应知应会考核、专业技能考核全部达标。
+                </td>
+                <td>1.不参加月度业务考试、模拟演练每人次减2分</td>
+                <td><input class="form-control" type="text" th:value="${jsyw1ReasonSelf}" name="jsyw1ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${jsyw1MarkSelf}" name="jsyw1MarkSelf"/></td>
+            </tr>
+            <tr bgcolor="#fcf8e3">
+                <td>2.责任区党员群众月度考试或抽考成绩不达标每人次减2分</td>
+                <td><input class="form-control" type="text" th:value="${jsyw2ReasonSelf}" name="jsyw2ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${jsyw2MarkSelf}" name="jsyw2MarkSelf"/></td>
+            </tr>
+            <tr bgcolor="#fcf8e3">
+                <td>3.应知应会考试、专业技能考核不达标的每人次减2分</td>
+                <td><input class="form-control" type="text" th:value="${jsyw3ReasonSelf}" name="jsyw3ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${jsyw3MarkSelf}" name="jsyw3MarkSelf"/></td>
+            </tr>
+            <tr bgcolor="#fcf8e3">
+                <td>4. 责任区党员群众技术业务帮带效果不明显减1-2分</td>
+                <td><input class="form-control" type="text" th:value="${jsyw4ReasonSelf}" name="jsyw4ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${jsyw4MarkSelf}" name="jsyw4MarkSelf"/></td>
+            </tr>
+            <!--技术业务帮带结束-->
+            <!--职工思想疏导开始-->
+            <tr bgcolor="#fcf8e3">
+                <td rowspan="4">职工思想疏导（基础分25分）:熟悉职工状况，掌握职工思想动态，
+                    及时化解矛盾，缓解职工困惑、浮躁情绪，对思想波动的职工，耐心细致做好思想引导工作，
+                    责任区内讲团结、有正气。
+                </td>
+                <td>1.对责任区内职工思想动态不掌握、不熟悉、不了解，不能及时做思想工作减2分</td>
+                <td><input class="form-control" type="text" th:value="${zgsx1ReasonSelf}" name="zgsx1ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${zgsx1MarkSelf}" name="zgsx1MarkSelf"/></td>
+            </tr>
+            <tr bgcolor="#fcf8e3">
+                <td>2.未及时与发生“两违”问题的党员群众谈心谈话减1-3分</td>
+                <td><input class="form-control" type="text" th:value="${zgsx2ReasonSelf}" name="zgsx2ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${zgsx2MarkSelf}" name="zgsx2MarkSelf"/></td>
+            </tr>
+            <tr bgcolor="#fcf8e3">
+                <td>3.未及时与困难党员群众谈心谈话的减1-3分</td>
+                <td><input class="form-control" type="text" th:value="${zgsx3ReasonSelf}" name="zgsx3ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${zgsx3MarkSelf}" name="zgsx3MarkSelf"/></td>
+            </tr>
+            <tr bgcolor="#fcf8e3">
+                <td>4.未及时化解矛盾造成不良影响的，减5-10分</td>
+                <td><input class="form-control" type="text" th:value="${zgsx4ReasonSelf}" name="zgsx4ReasonSelf"/></td>
+                <td><input class="form-control" type="text" th:value="${zgsx4MarkSelf}" name="zgsx4MarkSelf"/></td>
+            </tr>
+            <!--职工思想疏导结束-->
+            </tbody>
+        </table>
+
+
+    </div>
+
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript">
+
+    // function submitHandler() {
+    //
+    //     if ($.validate.form()) {
+    //         var startTime = $("input[name='startTime']").val();
+    //         if (startTime == null || startTime == "" || startTime == undefined) {
+    //             $.modal.alertError("请选择自评时间");
+    //         } else {
+    //             add();
+    //         }
+    //     }
+    // }
+    //
+    // function getTime() {
+    //     var now = new Date();
+    //     var nowTime = now.toLocaleString();
+    //     var time = nowTime.substring(12, 20);
+    //     return time;
+    // }
+    function submitHandler() {
+        add();
+    }
+
+    function add() {
+        var markId = $("input[name='markId']").val();
+        var fj1ReasonSelf = $("input[name='fj1ReasonSelf']").val();
+        var fj1MarkSelf = $("input[name='fj1MarkSelf']").val();
+        var fj2ReasonSelf = $("input[name='fj2ReasonSelf']").val();
+        var fj2MarkSelf = $("input[name='fj2MarkSelf']").val();
+        var fj3ReasonSelf = $("input[name='fj3ReasonSelf']").val();
+        var fj3MarkSelf = $("input[name='fj3MarkSelf']").val();
+        var fj4ReasonSelf = $("input[name='fj4ReasonSelf']").val();
+        var fj4MarkSelf = $("input[name='fj4MarkSelf']").val();
+        var fj5ReasonSelf = $("input[name='fj5ReasonSelf']").val();
+        var fj5MarkSelf = $("input[name='fj5MarkSelf']").val();
+
+        var jf1ReasonSelf = $("input[name='jf1ReasonSelf']").val();
+        var jf1MarkSelf = $("input[name='jf1MarkSelf']").val();
+        var jf2ReasonSelf = $("input[name='jf2ReasonSelf']").val();
+        var jf2MarkSelf = $("input[name='jf2MarkSelf']").val();
+        var jf3ReasonSelf = $("input[name='jf3ReasonSelf']").val();
+        var jf3MarkSelf = $("input[name='jf3MarkSelf']").val();
+        var jf4ReasonSelf = $("input[name='jf4ReasonSelf']").val();
+        var jf4MarkSelf = $("input[name='jf4MarkSelf']").val();
+        var jf5ReasonSelf = $("input[name='jf5ReasonSelf']").val();
+        var jf5MarkSelf = $("input[name='jf5MarkSelf']").val();
+        var jf6ReasonSelf = $("input[name='jf6ReasonSelf']").val();
+        var jf6MarkSelf = $("input[name='jf6MarkSelf']").val();
+
+        var llxz1ReasonSelf = $("input[name='llxz1ReasonSelf']").val();
+        var llxz1MarkSelf = $("input[name='llxz1MarkSelf']").val();
+        var llxz2ReasonSelf = $("input[name='llxz2ReasonSelf']").val();
+        var llxz2MarkSelf = $("input[name='llxz2MarkSelf']").val();
+        var llxz3ReasonSelf = $("input[name='llxz3ReasonSelf']").val();
+        var llxz3MarkSelf = $("input[name='llxz3MarkSelf']").val();
+        var llxz4ReasonSelf = $("input[name='llxz4ReasonSelf']").val();
+        var llxz4MarkSelf = $("input[name='llxz4MarkSelf']").val();
+
+        var zygw1ReasonSelf = $("input[name='zygw1ReasonSelf']").val();
+        var zygw1MarkSelf = $("input[name='zygw1MarkSelf']").val();
+        var zygw2ReasonSelf = $("input[name='zygw2ReasonSelf']").val();
+        var zygw2MarkSelf = $("input[name='zygw2MarkSelf']").val();
+        var zygw3ReasonSelf = $("input[name='zygw3ReasonSelf']").val();
+        var zygw3MarkSelf = $("input[name='zygw3MarkSelf']").val();
+
+        var jsyw1ReasonSelf = $("input[name='jsyw1ReasonSelf']").val();
+        var jsyw1MarkSelf = $("input[name='jsyw1MarkSelf']").val();
+        var jsyw2ReasonSelf = $("input[name='jsyw2ReasonSelf']").val();
+        var jsyw2MarkSelf = $("input[name='jsyw2MarkSelf']").val();
+        var jsyw3ReasonSelf = $("input[name='jsyw3ReasonSelf']").val();
+        var jsyw3MarkSelf = $("input[name='jsyw3MarkSelf']").val();
+        var jsyw4ReasonSelf = $("input[name='jsyw4ReasonSelf']").val();
+        var jsyw4MarkSelf = $("input[name='jsyw4MarkSelf']").val();
+
+        var zgsx1ReasonSelf = $("input[name='zgsx1ReasonSelf']").val();
+        var zgsx1MarkSelf = $("input[name='zgsx1MarkSelf']").val();
+        var zgsx2ReasonSelf = $("input[name='zgsx2ReasonSelf']").val();
+        var zgsx2MarkSelf = $("input[name='zgsx2MarkSelf']").val();
+        var zgsx3ReasonSelf = $("input[name='zgsx3ReasonSelf']").val();
+        var zgsx3MarkSelf = $("input[name='zgsx3MarkSelf']").val();
+        var zgsx4ReasonSelf = $("input[name='zgsx4ReasonSelf']").val();
+        var zgsx4MarkSelf = $("input[name='zgsx4MarkSelf']").val();
+        // var startTime = $("input[name='startTime']").val();
+        var datas = {
+            markId: markId,
+            fj1ReasonSelf: fj1ReasonSelf,
+            fj1MarkSelf: fj1MarkSelf,
+            fj2ReasonSelf: fj2ReasonSelf,
+            fj2MarkSelf: fj2MarkSelf,
+            fj3ReasonSelf: fj3ReasonSelf,
+            fj3MarkSelf: fj3MarkSelf,
+            fj4ReasonSelf: fj4ReasonSelf,
+            fj4MarkSelf: fj4MarkSelf,
+            fj5ReasonSelf: fj5ReasonSelf,
+            fj5MarkSelf: fj5MarkSelf,
+            jf1ReasonSelf: jf1ReasonSelf,
+            jf1MarkSelf: jf1MarkSelf,
+            jf2ReasonSelf: jf2ReasonSelf,
+            jf2MarkSelf: jf2MarkSelf,
+            jf3ReasonSelf: jf3ReasonSelf,
+            jf3MarkSelf: jf3MarkSelf,
+            jf4ReasonSelf: jf4ReasonSelf,
+            jf4MarkSelf: jf4MarkSelf,
+            jf5ReasonSelf: jf5ReasonSelf,
+            jf5MarkSelf: jf5MarkSelf,
+            jf6ReasonSelf: jf6ReasonSelf,
+            jf6MarkSelf: jf6MarkSelf,
+            llxz1ReasonSelf: llxz1ReasonSelf,
+            llxz1MarkSelf: llxz1MarkSelf,
+            llxz2ReasonSelf: llxz2ReasonSelf,
+            llxz2MarkSelf: llxz2MarkSelf,
+            llxz3ReasonSelf: llxz3ReasonSelf,
+            llxz3MarkSelf: llxz3MarkSelf,
+            llxz4ReasonSelf: llxz4ReasonSelf,
+            llxz4MarkSelf: llxz4MarkSelf,
+            zygw1ReasonSelf: zygw1ReasonSelf,
+            zygw1MarkSelf: zygw1MarkSelf,
+            zygw2ReasonSelf: zygw2ReasonSelf,
+            zygw2MarkSelf: zygw2MarkSelf,
+            zygw3ReasonSelf: zygw3ReasonSelf,
+            zygw3MarkSelf: zygw3MarkSelf,
+            jsyw1ReasonSelf: jsyw1ReasonSelf,
+            jsyw1MarkSelf: jsyw1MarkSelf,
+            jsyw2ReasonSelf: jsyw2ReasonSelf,
+            jsyw2MarkSelf: jsyw2MarkSelf,
+            jsyw3ReasonSelf: jsyw3ReasonSelf,
+            jsyw3MarkSelf: jsyw3MarkSelf,
+            jsyw4ReasonSelf: jsyw4ReasonSelf,
+            jsyw4MarkSelf: jsyw4MarkSelf,
+            zgsx1ReasonSelf: zgsx1ReasonSelf,
+            zgsx1MarkSelf: zgsx1MarkSelf,
+            zgsx2ReasonSelf: zgsx2ReasonSelf,
+            zgsx2MarkSelf: zgsx2MarkSelf,
+            zgsx3ReasonSelf: zgsx3ReasonSelf,
+            zgsx3MarkSelf: zgsx3MarkSelf,
+            zgsx4ReasonSelf: zgsx4ReasonSelf,
+            zgsx4MarkSelf: zgsx4MarkSelf,
+            // markTime: startTime + " " + getTime()
+        };
+        console.log(datas);
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url: ctx + "system/mark/markDZB/editReal",
+            data: datas,
+            async: false,
+            error: function (request) {
+                $.modal.alertError("系统错误");
+            },
+            success: function (data) {
+                $.operate.successCallback(data);
+            }
+        });
+    }
+</script>
+</body>
+</html>

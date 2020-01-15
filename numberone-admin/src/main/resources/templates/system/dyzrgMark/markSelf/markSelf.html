@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+
+<div class="container-div">
+    <div class="row">
+        <!--查询框开始-->
+        <div class="col-sm-12 search-collapse">
+            <form id="user-form">
+                <input type="hidden" id="deptId" name="deptId">
+                <input type="hidden" id="parentId" name="parentId">
+                <div class="select-list">
+                    <ul>
+
+                        <li>
+                            自评年份：<select type="text" name="markYear">
+                            <option value="">所有</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                        </select>
+                        </li>
+
+                        <li>
+                            自评季度：<select type="text" name="markJiDu">
+                            <option value="">所有</option>
+                            <option value="01">一季度</option>
+                            <option value="02">二季度</option>
+                            <option value="03">三季度</option>
+                            <option value="04">四季度</option>
+                        </select>
+                        </li>
+
+
+                        <li>
+                            自评月份：<select type="text" name="markMonth">
+                            <option value="">所有</option>
+                            <option value="01">一月</option>
+                            <option value="02">二月</option>
+                            <option value="03">三月</option>
+                            <option value="04">四月</option>
+                            <option value="05">五月</option>
+                            <option value="06">六月</option>
+                            <option value="07">七月</option>
+                            <option value="08">八月</option>
+                            <option value="09">九月</option>
+                            <option value="10">十月</option>
+                            <option value="11">十一月</option>
+                            <option value="12">十二月</option>
+                        </select>
+                        </li>
+
+                        <li class="select-time">
+                            <label>自评时间： </label>
+                            <input type="text" class="time-input" id="startTime" placeholder="开始时间"
+                                   name="params[startTime]"/>
+                            <span>-</span>
+                            <input type="text" class="time-input" id="endTime" placeholder="结束时间"
+                                   name="params[endTime]"/>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i
+                                    class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i
+                                    class="fa fa-refresh"></i>&nbsp;重置</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+        <!--查询框结束-->
+
+
+        <div class="btn-group-sm hidden-xs" id="toolbar" role="group">
+            <a class="btn btn-success" onclick="$.operate.add()">
+                <i class="fa fa-plus"></i> 新增
+            </a>
+            <a class="btn btn-danger btn-del disabled" onclick="$.operate.removeReal(queryMarkId())" >
+                <i class="fa fa-remove"></i> 删除
+            </a>
+            <a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit(queryMarkId())">
+                <i class="fa fa-edit"></i> 修改
+            </a>
+            <!--<a class="btn btn-danger btn-del disabled" onclick="$.operate.removeAll()">-->
+            <!--<i class="fa fa-remove"></i> 删除-->
+            <!--</a>-->
+            <a class="btn btn-warning" onclick="$.table.exportExcel()">
+                <i class="fa fa-download"></i> 导出
+            </a>
+        </div>
+
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+        </div>
+    </div>
+</div>
+<div th:include="include :: footer"></div>
+<script th:inline="javascript">
+    var editFlag = [[${@permission.hasPermi('system:role:edit')}]];
+    var removeFlag = [[${@permission.hasPermi('system:role:remove')}]];
+    var datas = [[${@dict.getType('sys_normal_disable')}]];
+    var prefix = ctx + "system/dyzrgMark/markSelf";
+
+
+    function queryUserList() {
+        var options = {
+            url: prefix + "/list",
+            createUrl: prefix + "/add",
+            updateUrl: prefix + "/edit/{id}",
+            removeRealUrl:prefix + "/removeReal/{id}",
+            removeUrl: prefix + "/remove",
+            exportUrl: prefix + "/export",
+            removeRealUrl:prefix + "/removeReal/{id}",
+            sortName: "s.mark_time",
+            modalName: "自评",
+            dataField: "row",
+            search: false,
+            showExport: false,
+            columns: [{
+                checkbox: true
+            },
+
+
+                {
+                    field: 'smark_id',
+                    title: '自评id',
+                    sortable: true
+                },
+                {
+                    field: 'suid',
+                    title: '用户id',
+                    sortable: true
+                },
+                {
+                    field: 'smark_mark',
+                    title: '自评得分',
+                    sortable: true
+                },
+                // {
+                //     field: 'smark_time',
+                //     title: '自评时间',
+                //     sortable: true
+                // },
+                {
+                    field: 'smark_year',
+                    title: '自评年份',
+                    sortable: true
+                },
+                {
+                    field: 'smark_month',
+                    title: '自评月份',
+                    sortable: true
+                },
+                {
+                    field: 'lmark_mark',
+                    title: '小组评得分',
+                    sortable: true
+                },
+                {
+                    field: 'lmark_time',
+                    title: '小组评时间',
+                    sortable: true
+                },
+                {
+                    field: 'dmark_mark',
+                    title: '党支部评得分',
+                    sortable: true
+                },
+                {
+                    field: 'dmark_time',
+                    title: '党支部评时间',
+                    sortable: true
+                },
+                {
+                    title: '自评明细',
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        var actions = [];
+                        // actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.markId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-success btn-xs' + editFlag + '" href="#" onclick="getMarkSelfDetail(\'' + row.smark_id + '\')"><i class="fa fa-edit"></i>自评明细</a> ');
+                        // actions.push('<a class="btn btn-info btn-xs' + editFlag + '" href="#" onclick="getMarkLeaderDetail(\''+row.smark_id+'\')"><i class="fa fa-edit"></i>组评明细</a> ');
+                        return actions.join('');
+                    }
+                },
+                {
+                    title: '小组评明细',
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        var actions = [];
+                        // actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.markId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        // actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="getMarkSelfDetail(\''+row.smark_id+'\')"><i class="fa fa-edit"></i>自评明细</a> ');
+                        actions.push('<a class="btn btn-info btn-xs' + editFlag + '" href="#" onclick="getMarkLeaderDetail(\'' + row.smark_id + '\')"><i class="fa fa-edit"></i>组评明细</a> ');
+                        return actions.join('');
+                    }
+                },
+                {
+                    title: '支部评明细',
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        var actions = [];
+                        // actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.markId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        // actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="getMarkSelfDetail(\''+row.smark_id+'\')"><i class="fa fa-edit"></i>自评明细</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs' + editFlag + '" href="#" onclick="getMarkDZBDetail(\'' + row.smark_id + '\')"><i class="fa fa-edit"></i>支部评明细</a> ');
+                        return actions.join('');
+                    }
+                }]
+        };
+        $.table.init(options);
+    }
+
+    function getMarkSelfDetail(url) {
+        $.modal.open('自评明细', '/system/dyzrgMark/markSelf/detail/' + url, 800, 500);
+    }
+
+    function getMarkLeaderDetail(url) {
+        $.modal.open('小组评明细', '/system/dyzrgMark/markLeader/detail/' + url, 800, 500);
+    }
+
+    function getMarkDZBDetail(url) {
+        $.modal.open('党支部评明细', '/system/dyzrgMark/markDZB/detail/' + url, 800, 500);
+    }
+
+    function queryMarkId() {
+        var getSelectRows = $("#bootstrap-table").bootstrapTable('getSelections', function (row) {
+            var smark_id = row[0].smark_id;
+            return smark_id;
+        });
+        console.log(getSelectRows[0].smark_id);
+        return getSelectRows[0].smark_id;
+    }
+
+    $(function () {
+        // var panehHidden = false;
+        // if ($(this).width() < 769) {
+        //     panehHidden = true;
+        // }
+        // $('body').layout({initClosed: panehHidden, west__size: 185});
+        queryUserList();
+        $('#bootstrap-table').bootstrapTable('hideColumn', 'smark_id');
+        $('#bootstrap-table').bootstrapTable('hideColumn', 'suid');
+    });
+
+
+</script>
+</body>
+</html>
