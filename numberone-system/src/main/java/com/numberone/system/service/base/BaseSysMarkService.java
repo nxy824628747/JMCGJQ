@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * 自评二版Service层通用方法
  */
-public abstract class BaseSysMarkService {
+public abstract class BaseSysMarkService extends BaseMarkService{
 
 
     public int update(SysMark m, BaseSysMarkMapper mapper,BaseSysMarkMapper sonMapper,int isZeroFlag){

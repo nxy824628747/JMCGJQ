@@ -13,7 +13,7 @@ import static com.numberone.common.base.AjaxResult.error;
 /**
  * 党员责任岗评分Service层基类
  */
-public abstract class BaseSysdyzegMarkSelfService {
+public abstract class BaseSysdyzegMarkSelfService extends BaseMarkService{
 
     public int update(SysDyzegMark m, BaseSysDyzegMarkMapper mapper,BaseSysDyzegMarkMapper sonMapper,int isZeroFlag){
         if(m==null||m.getMarkId()==null){return 0;}

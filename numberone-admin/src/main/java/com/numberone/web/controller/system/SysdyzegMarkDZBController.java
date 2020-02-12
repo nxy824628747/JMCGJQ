@@ -3,12 +3,10 @@ package com.numberone.web.controller.system;
 import com.numberone.common.annotation.Log;
 import com.numberone.common.base.AjaxResult;
 import com.numberone.common.enums.BusinessType;
+import com.numberone.common.utils.ServletUtils;
 import com.numberone.common.utils.bean.BeanUtils;
 import com.numberone.common.utils.poi.ExcelUtil;
-import com.numberone.system.domain.SysDyzegMark;
-import com.numberone.system.domain.SysMark;
-import com.numberone.system.domain.SysMarkImport;
-import com.numberone.system.domain.SysUser;
+import com.numberone.system.domain.*;
 import com.numberone.system.service.ISysMarkService;
 import com.numberone.system.service.ISysdyzegMarkService;
 import com.numberone.system.service.impl.SysMarkDZBServiceImpl;
@@ -21,7 +19,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("system/dyzrgMark/markDZB")
@@ -129,5 +129,49 @@ public class SysdyzegMarkDZBController extends BaseSysdyzegMarkController {
         int res1=service.update(s,flag);
         if(res1==1){return success("修改成功");}
         return error("修改失败");
+    }
+
+
+    @GetMapping("/statistic")
+    public String statistic() {
+        return "system/mark/dyzrgMarkStatistic";
+    }
+
+    @PostMapping("statistic/list")
+    @ResponseBody
+    @Log(title = "责任岗评分统计", businessType = BusinessType.OTHER)
+    public Object statisticList() {
+        String startTime = ServletUtils.getParameter("params[startTime]");
+        String endTime = ServletUtils.getParameter("params[endTime]");
+        String deptId = ServletUtils.getParameter("deptId");
+        try {
+            startPage();
+            List<Map<String, Object>> result = service.stat(startTime, endTime, deptId);
+            if (result == null || result.size() == 0) {
+                return error("所选部门及时间段内无评分记录");
+            }
+            clearPage();
+            return getDataTable(result);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @PostMapping("statistic/export")
+    @ResponseBody
+    @Log(title = "责任岗评分统计导出", businessType = BusinessType.OTHER)
+    public AjaxResult exportStatistic() {
+        String startTime = ServletUtils.getParameter("params[startTime]");
+        String endTime = ServletUtils.getParameter("params[endTime]");
+        String deptId = ServletUtils.getParameter("deptId");
+        try {
+            List<Map<String, Object>> result = service.stat(startTime, endTime, deptId);
+            ExcelUtil<SysMarkStatistic> util = new ExcelUtil<SysMarkStatistic>(SysMarkStatistic.class);
+            return util.exportExcelFromMap(result, "(" + startTime + "至" + endTime + ")" + "先锋岗评分统计", SysMarkStatistic.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return error("导出失败");
+        }
     }
 }

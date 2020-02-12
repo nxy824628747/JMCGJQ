@@ -7,7 +7,7 @@ import com.numberone.system.domain.SysMarkImport;
 import java.util.List;
 import java.util.Map;
 
-public interface BaseSysMarkMapper{
+public interface BaseSysMarkMapper extends BaseMarkMapper{
     public List<SysMark> selectObject(BaseEntity m);
 
     public List<SysMark> selectList(BaseEntity m);

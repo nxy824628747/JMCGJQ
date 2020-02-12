@@ -4,10 +4,13 @@ import com.numberone.common.json.JSONObject;
 import org.apache.poi.ss.formula.functions.T;
 import org.springframework.ui.ModelMap;
 
+import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -149,10 +152,11 @@ public class BeanUtils {
 
     /**
      * POJO拼装进modelMap
+     *
      * @param obj
      * @return
      */
-    public static void getModelMap(Object obj,ModelMap m) {
+    public static void getModelMap(Object obj, ModelMap m) {
         if (obj != null) {
             Class cls = obj.getClass();
             Field[] fieldArray = cls.getDeclaredFields();
@@ -235,11 +239,11 @@ public class BeanUtils {
             return result;
         }
         for (int i = 0; i < list1.size(); i++) {
-            Object o=list1.get(i);
+            Object o = list1.get(i);
             result.add(o);
         }
         for (int j = 0; j < list2.size(); j++) {
-            Object o=list2.get(j);
+            Object o = list2.get(j);
             result.add(o);
         }
         return result;
@@ -310,14 +314,87 @@ public class BeanUtils {
     }
 
 
-    public static double getDoubleValue(Double d){
-        if(d==null){
+    public static double getDoubleValue(Double d) {
+        if (d == null) {
             return 0;
         }
         //针对评分管理，评分必须为正数
-        if(d<0){
-            d=d*(-1);
+        if (d < 0) {
+            d = d * (-1);
         }
         return d.doubleValue();
+    }
+
+
+    /**
+     * @Author Nxy
+     * @Date 2020/2/12 12:43
+     * @Param sourceMap:源Map target:目标对象的Class对象
+     * @Return 目标对象的实例
+     * @Exception
+     * @Description 将 Map 转为相关对象，浅拷贝
+     */
+    public static Object getBeanFromMap(Map sourceMap, Class target) throws IllegalAccessException, InstantiationException {
+        if (sourceMap == null || target == null) {
+            throw new NullPointerException("sourceMap or target Class is null!");
+        }
+        Object o = target.newInstance();
+        Field[] fs = target.getDeclaredFields();
+        int fLength = fs.length;
+        if (fLength == 0) {
+            throw new RuntimeException("Fields of Class is null!");
+        }
+        Set mKeySet = sourceMap.keySet();
+        if (mKeySet == null || mKeySet.size() == 0) {
+            throw new RuntimeException("keySet of Map is null!");
+        }
+
+        for (int i = 0; i < fLength; i++) {
+            Field fieldI = fs[i];
+            //取消访问检查
+            fieldI.setAccessible(true);
+            String fieldName = fieldI.getName();
+            if (mKeySet.contains(fieldName)) {
+                setFieldValue(o, fieldI, sourceMap.get(fieldName));
+            }
+        }
+        return o;
+    }
+
+    /**
+     * @Author Nxy
+     * @Date 2020/2/12 14:14
+     * @Param target:目标对象，field：待赋值属性属性对象，value：属性值
+     * @Return
+     * @Exception
+     * @Description 反射为属性赋值
+     */
+    public static void setFieldValue(Object target, Field field, Object value) throws IllegalAccessException {
+        String fieldType = field.getGenericType().toString();
+        switch (fieldType) {
+            case "class java.lang.String":
+                field.set(target, String.valueOf(value));
+                break;
+            case "class java.lang.Integer":
+                field.set(target, Integer.valueOf(value.toString()));
+                break;
+            case "class java.lang.Double":
+                field.set(target, Double.valueOf(value.toString()));
+                break;
+            case "class java.lang.Float":
+                field.set(target, Float.valueOf(value.toString()));
+                break;
+            case "int":
+                field.set(target, Integer.valueOf(value.toString()));
+                break;
+            case "float":
+                field.set(target, Float.valueOf(value.toString()));
+                break;
+            case "boolean":
+                field.set(target, Boolean.valueOf(value.toString()));
+                break;
+            default:
+                field.set(target, value);
+        }
     }
 }

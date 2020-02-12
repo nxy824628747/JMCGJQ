@@ -11,6 +11,7 @@ import com.numberone.system.service.base.BaseSysMarkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +23,19 @@ public class SysMarkDZBServiceImpl extends BaseSysMarkService implements ISysMar
     SysMarkSelfMapper selfMapper;
     @Autowired
     SysMarkLeaderMapper leaderMapper;
+
+
+    /**
+     * @Author Nxy
+     * @Date 2020/2/10 14:14
+     * @Param
+     * @Return
+     * @Exception
+     * @Description 区间总得分统计
+     */
+    public List<Map<String, Object>> stat(String startTime, String endTime, String deptId) throws ParseException {
+        return statistic(startTime, endTime, deptId, mapper);
+    }
 
     /**
      * 查询对象信息,必须拼装入mark_id
@@ -82,7 +96,7 @@ public class SysMarkDZBServiceImpl extends BaseSysMarkService implements ISysMar
         //计算总得分
         sumAll(m);
         double markLeader = markLeaderList.get(0).getMarkMark();
-        if (markLeader == 0||isFouJue(m)) {
+        if (markLeader == 0 || isFouJue(m)) {
             m.setMarkMark(0.0);
         } else {
             m.setMarkMark(m.getMarkMark() + markLeader - 100);
@@ -91,8 +105,8 @@ public class SysMarkDZBServiceImpl extends BaseSysMarkService implements ISysMar
     }
 
     @Override
-    public int update(SysMark m,int isZeroFlag) {
-        return super.update(m,mapper,leaderMapper,isZeroFlag);
+    public int update(SysMark m, int isZeroFlag) {
+        return super.update(m, mapper, leaderMapper, isZeroFlag);
     }
 
     @Override

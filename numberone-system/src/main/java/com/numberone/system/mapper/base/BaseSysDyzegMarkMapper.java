@@ -7,7 +7,7 @@ import com.numberone.system.domain.SysMarkImport;
 import java.util.List;
 import java.util.Map;
 
-public interface BaseSysDyzegMarkMapper {
+public interface BaseSysDyzegMarkMapper  extends BaseMarkMapper{
     public List<SysDyzegMark> selectObject(SysDyzegMark m);
 
     public List<SysDyzegMark> selectList(SysDyzegMark m);

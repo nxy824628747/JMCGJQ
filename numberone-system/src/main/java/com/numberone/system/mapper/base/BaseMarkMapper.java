@@ -1,0 +1,1 @@
+package com.numberone.system.mapper.base;import java.util.List;import java.util.Map;public interface BaseMarkMapper {    List<Map<String,Object>> statistic(Map m);}
