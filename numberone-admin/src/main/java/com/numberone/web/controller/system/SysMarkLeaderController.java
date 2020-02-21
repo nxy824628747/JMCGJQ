@@ -41,20 +41,20 @@ public class SysMarkLeaderController extends BaseSysMarkController {
     @PostMapping("list")
     @ResponseBody
     public Object getList(SysMark m) {
-        return getList(m,service);
+        return getList(m, service);
     }
 
     @GetMapping("/add/{markId}")
     public String add(@PathVariable("markId") String markId, ModelMap map) {
-        map.put("markId",markId);
+        map.put("markId", markId);
         return prefix + "/markLeaderadd";
     }
 
     @Log(title = "责任区评分管理-小组新增", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
-    public AjaxResult add(SysMark m){
-        return addLeader(m,service);
+    public AjaxResult add(SysMark m) {
+        return addLeader(m, service);
     }
 
 
@@ -63,18 +63,27 @@ public class SysMarkLeaderController extends BaseSysMarkController {
      */
     @GetMapping("/detail/{markId}")
     public String detail(@PathVariable("markId") String markId, ModelMap mmap) {
-        getMarkPOJO(markId,service,mmap);
+        try {
+            getMarkPOJO(markId, service, mmap);
+        } catch (IllegalAccessException ie) {
+            ie.printStackTrace();
+            return "error/500";
+        } catch (NoSuchFieldException ne) {
+            ne.printStackTrace();
+            return "error/500";
+        }
         return "system/mark/markDetail";
     }
 
     /**
      * 新增小组评
+     *
      * @param m
      * @param service
      * @return
      */
     private AjaxResult addLeader(SysMark m, ISysMarkService service) {
-        String markId=m.getMarkId();
+        String markId = m.getMarkId();
         setInsertSelectBaseInfo(m, BusinessType.INSERT);
         m.setMarkId(markId);
         int i = service.insert(m);
@@ -94,11 +103,11 @@ public class SysMarkLeaderController extends BaseSysMarkController {
     @PostMapping("/export")
     @ResponseBody
     public AjaxResult export(SysMark m) {
-        SysUser curUser=getSysUser();
-        Long uid=curUser.getUserId();
+        SysUser curUser = getSysUser();
+        Long uid = curUser.getUserId();
         m.setUid(uid);
-        if(m.getDeptId()==null||m.getDeptId().length()==0){
-            Long deptId=curUser.getDeptId();
+        if (m.getDeptId() == null || m.getDeptId().length() == 0) {
+            Long deptId = curUser.getDeptId();
             m.setDeptId(String.valueOf(deptId));
         }
         List<SysMarkImport> list = service.selectImpotList(m);
@@ -110,37 +119,49 @@ public class SysMarkLeaderController extends BaseSysMarkController {
     @Log(title = "责任区评分小组评-小组删除", businessType = BusinessType.EXPORT)
     @PostMapping("removeReal/{markId}")
     @ResponseBody
-    public AjaxResult edit(@PathVariable("markId") String markId){
-        if(markId==null||markId.length()==0){
+    public AjaxResult edit(@PathVariable("markId") String markId) {
+        if (markId == null || markId.length() == 0) {
             return error("请传入正确的markId");
         }
-        SysMark s=new SysMark();
+        SysMark s = new SysMark();
         s.setMarkId(markId);
-        List<SysMark> res= BeanUtils.cleanNull(dzbService.selectObject(s));
-        if(res!=null&&res.size()!=0){
+        List<SysMark> res = BeanUtils.cleanNull(dzbService.selectObject(s));
+        if (res != null && res.size() != 0) {
             return error("党支部已在此基础上评分，不可删除！");
         }
-        int re=service.delete(markId);
-        if(re==0){return error("还未进行小组评分，无法删除！");}
+        int re = service.delete(markId);
+        if (re == 0) {
+            return error("还未进行小组评分，无法删除！");
+        }
         return success("删除成功");
     }
 
     @GetMapping("/edit/{markId}")
     public String update(@PathVariable("markId") String markId, ModelMap mmap) {
-        getMarkPOJO(markId, service, mmap);
+        try {
+            getMarkPOJO(markId, service, mmap);
+        } catch (IllegalAccessException ie) {
+            ie.printStackTrace();
+            return "error/500";
+        } catch (NoSuchFieldException ne) {
+            ne.printStackTrace();
+            return "error/500";
+        }
         return "system/mark/markLeader/markLeaderUpdate";
     }
 
     @Log(title = "责任区评分导出-小组修改", businessType = BusinessType.UPDATE)
     @PostMapping("/editReal")
     @ResponseBody
-    public AjaxResult update(SysMark s){
-        SysMark sm=new SysMark();
+    public AjaxResult update(SysMark s) {
+        SysMark sm = new SysMark();
         s.setMarkId(s.getMarkId());
-        List<SysMark> res= BeanUtils.cleanNull(selfService.selectObject(s));
-        double selfMark=res.get(0).getMarkMark();
-        int flag=0;
-        if(selfMark==0.0){flag=1;}
-        return update(s,dzbService,service,flag);
+        List<SysMark> res = BeanUtils.cleanNull(selfService.selectObject(s));
+        double selfMark = res.get(0).getMarkMark();
+        int flag = 0;
+        if (selfMark == 0.0) {
+            flag = 1;
+        }
+        return update(s, dzbService, service, flag);
     }
 }

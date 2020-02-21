@@ -1,61 +1,90 @@
 package com.numberone.system.domain;
 
+import com.numberone.common.annotation.MarkReason;
 import com.numberone.common.base.BaseEntity;
 
 import java.sql.Timestamp;
 
 public class SysMark extends BaseEntity {
+
+    private String markReasons;
     private String fj1ReasonSelf;
+    @MarkReason(reasonName = "责任区党员群众发生违法行为", isFouJue = true)
     private Double fj1MarkSelf;
     private String fj2ReasonSelf;
+    @MarkReason(reasonName = "责任区党员群众发生撞“红线”及以上问题", isFouJue = true)
     private Double fj2MarkSelf;
     private String fj3ReasonSelf;
+    @MarkReason(reasonName = "责任区党员群众参与群体上访、越级上访", isFouJue = true)
     private Double fj3MarkSelf;
     private String fj4ReasonSelf;
+    @MarkReason(reasonName = "责任区发生打架斗殴等不良行为", isFouJue = true)
     private Double fj4MarkSelf;
     private String fj5ReasonSelf;
+    @MarkReason(reasonName = "经研究其他否决项目的问题", isFouJue = true)
     private Double fj5MarkSelf;
     private String jf1ReasonSelf;
+    @MarkReason(reasonName = "责任区党员群众发现安全重大隐患、防止安全事故、受到段级及以上表扬表彰或通报嘉奖", isSubtraction = false)
     private Double jf1MarkSelf;
     private String jf2ReasonSelf;
+    @MarkReason(reasonName = "责任区党员群众参加技术比武获得名次", isSubtraction = false)
     private Double jf2MarkSelf;
     private String jf3ReasonSelf;
+    @MarkReason(reasonName = "积极组织责任区党员群众 围绕安全、运输和技术难题立项攻关取得实效，受到总公司、 集团公司、段表彰", isSubtraction = false)
     private Double jf3MarkSelf;
     private String jf4ReasonSelf;
+    @MarkReason(reasonName = "责任区党员群众完成急难险重任务成绩突出", isSubtraction = false)
     private Double jf4MarkSelf;
     private String jf5ReasonSelf;
+    @MarkReason(reasonName = "责任区党员群众做好人好事、见义勇为事迹受到表彰奖励或媒体表扬", isSubtraction = false)
     private Double jf5MarkSelf;
     private String jf6ReasonSelf;
+    @MarkReason(reasonName = "其他受到集团公司及以上表彰奖励", isSubtraction = false)
     private Double jf6MarkSelf;
     private String llxz1ReasonSelf;
+    @MarkReason(reasonName = "责任区党员群众无故不参加上级组织的集体活动")
     private Double llxz1MarkSelf;
     private String llxz2ReasonSelf;
+    @MarkReason(reasonName = "责任区内环境卫生差、备品摆放不整齐")
     private Double llxz2MarkSelf;
     private String llxz3ReasonSelf;
+    @MarkReason(reasonName = "班组标准化验收不达标")
     private Double llxz3MarkSelf;
     private String llxz4ReasonSelf;
+    @MarkReason(reasonName = "班组未完成生产任务，运输组织工作，旅客、货主等服务工作受到上级批评")
     private Double llxz4MarkSelf;
     private String zygw1ReasonSelf;
+    @MarkReason(reasonName = "责任区党员群众发生迟到、早退")
     private Double zygw1MarkSelf;
     private String zygw2ReasonSelf;
+    @MarkReason(reasonName = "责任区党员群众发生严重“两违”问题")
     private Double zygw2MarkSelf;
     private String zygw3ReasonSelf;
+    @MarkReason(reasonName = "作业提醒不到位")
     private Double zygw3MarkSelf;
     private String jsyw1ReasonSelf;
+    @MarkReason(reasonName = "不参加月度业务考试、模拟演练")
     private Double jsyw1MarkSelf;
     private String jsyw2ReasonSelf;
+    @MarkReason(reasonName = "责任区党员群众月度考试或抽考成绩不达标")
     private Double jsyw2MarkSelf;
     private String jsyw3ReasonSelf;
+    @MarkReason(reasonName = "应知应会考试、专业技能考核不达标")
     private Double jsyw3MarkSelf;
     private String jsyw4ReasonSelf;
+    @MarkReason(reasonName = "责任区党员群众技术业务帮带效果不明显")
     private Double jsyw4MarkSelf;
     private String zgsx1ReasonSelf;
+    @MarkReason(reasonName = "对责任区内职工思想动态不掌握、不熟悉、不了解，不能及时做思想工作")
     private Double zgsx1MarkSelf;
     private String zgsx2ReasonSelf;
+    @MarkReason(reasonName = "未及时与发生“两违”问题的党员群众谈心谈")
     private Double zgsx2MarkSelf;
     private String zgsx3ReasonSelf;
+    @MarkReason(reasonName = "未及时与困难党员群众谈心谈话")
     private Double zgsx3MarkSelf;
     private String zgsx4ReasonSelf;
+    @MarkReason(reasonName = "未及时化解矛盾造成不良影响")
     private Double zgsx4MarkSelf;
     private java.sql.Timestamp markTime;
     private java.sql.Timestamp updateTime;
@@ -635,4 +664,11 @@ public class SysMark extends BaseEntity {
         this.uid = uid;
     }
 
+    public String getMarkReasons() {
+        return markReasons;
+    }
+
+    public void setMarkReasons(String markReasons) {
+        this.markReasons = markReasons;
+    }
 }

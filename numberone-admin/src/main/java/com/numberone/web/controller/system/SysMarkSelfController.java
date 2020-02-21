@@ -93,13 +93,29 @@ public class SysMarkSelfController extends BaseSysMarkController {
      */
     @GetMapping("/detail/{markId}")
     public String edit(@PathVariable("markId") String markId, ModelMap mmap) {
-        getMarkPOJO(markId, service, mmap);
+        try {
+            getMarkPOJO(markId, service, mmap);
+        } catch (IllegalAccessException ie) {
+            ie.printStackTrace();
+            return "error/500";
+        } catch (NoSuchFieldException ne) {
+            ne.printStackTrace();
+            return "error/500";
+        }
         return "system/mark/markDetail";
     }
 
     @GetMapping("/edit/{markId}")
     public String update(@PathVariable("markId") String markId, ModelMap mmap) {
-        getMarkPOJO(markId, service, mmap);
+        try {
+            getMarkPOJO(markId, service, mmap);
+        } catch (IllegalAccessException ie) {
+            ie.printStackTrace();
+            return "error/500";
+        } catch (NoSuchFieldException ne) {
+            ne.printStackTrace();
+            return "error/500";
+        }
         return "system/mark/markSelf/markUpdate";
     }
 

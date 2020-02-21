@@ -7,6 +7,7 @@ import com.numberone.common.page.TableDataInfo;
 import com.numberone.common.utils.ServletUtils;
 import com.numberone.common.utils.YamlUtil;
 import com.numberone.common.utils.bean.BeanUtils;
+import com.numberone.common.utils.bean.MarkBeanUtils;
 import com.numberone.framework.web.base.BaseController;
 import com.numberone.system.domain.SysDyzegMark;
 import com.numberone.system.domain.SysMark;
@@ -34,7 +35,8 @@ public class BaseSysMarkController extends BaseController {
      * @return
      */
     @SuppressWarnings("AlibabaLowerCamelCaseVariableNaming")
-    protected void getMarkPOJO(String markId, ISysMarkService service, ModelMap modelMap) {
+    protected void getMarkPOJO(String markId, ISysMarkService service, ModelMap modelMap )
+            throws IllegalAccessException, NoSuchFieldException {
         SysMark m = new SysMark();
         m.setMarkId(markId);
         List<SysMark> list0 = service.selectObject(m);
@@ -45,6 +47,7 @@ public class BaseSysMarkController extends BaseController {
             return;
         }
         m = list.get(0);
+        MarkBeanUtils.setMarkReasons(m);
         BeanUtils.getModelMap(m, modelMap);
     }
 
@@ -177,20 +180,23 @@ public class BaseSysMarkController extends BaseController {
 
     /**
      * 修改评分
+     *
      * @param s
      * @param fatherService
      * @param service
      * @return
      */
-    public AjaxResult update(SysMark s,ISysMarkService fatherService,ISysMarkService service,int isZeroFlag){
-        SysMark sm=new SysMark();
+    public AjaxResult update(SysMark s, ISysMarkService fatherService, ISysMarkService service, int isZeroFlag) {
+        SysMark sm = new SysMark();
         sm.setMarkId(s.getMarkId());
-        List<SysMark> leader=BeanUtils.cleanNull(fatherService.selectObject(sm));
-        if(leader!=null&&leader.size()!=0){
+        List<SysMark> leader = BeanUtils.cleanNull(fatherService.selectObject(sm));
+        if (leader != null && leader.size() != 0) {
             return error("上级已在此基础上评分，不可修改！");
         }
-        int re=service.update(s,isZeroFlag);
-        if(re==1){return success("修改成功");}
+        int re = service.update(s, isZeroFlag);
+        if (re == 1) {
+            return success("修改成功");
+        }
         return error("修改失败");
     }
 
